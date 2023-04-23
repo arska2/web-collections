@@ -7,15 +7,15 @@ export const HomePage = () => {
 
 
     return (
-        <div className="container">
+        <div >
             <div className="row">
                 <CategoryContainer />
             </div>
             <div className="row">
-                <div className="col-2">
+                <div className="col-3">
                     <TagContainer />
                 </div>
-                <div className="col-11">
+                <div className="col-8">
                     <WebsiteContainer />
                 </div>
             </div>

@@ -14,11 +14,15 @@ export const apiSlice = createApi({
         }),
         getCategories: builder.query({
             query: () => '/categories'
+        }),
+        getTags: builder.query({
+            query: () => '/tags'
         })
     })
 })
 
 export const {
     useGetWebsitesQuery,
-    useGetCategoriesQuery
+    useGetCategoriesQuery,
+    useGetTagsQuery,
 } = apiSlice

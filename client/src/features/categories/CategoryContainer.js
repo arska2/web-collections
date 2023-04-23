@@ -6,11 +6,11 @@ export const CategoryContainer = () => {
 
 
     if (isLoading) return <p>Loading...</p>
-    console.log(categories)
+    console.log('categories', categories)
     return <div>
         <ul>
             {categories.map(category => (
-                <Badge pill bg="primary">
+                <Badge pill bg="primary" key={category.id}>
                     {category.name}
                 </Badge>
             ))}
