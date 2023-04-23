@@ -3,6 +3,7 @@ package com.collections.web.website;
 import java.util.List;
 
 import com.collections.web.category.Category;
+import com.collections.web.tag.Tag;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +27,12 @@ public class Website {
 			joinColumns = @JoinColumn(name = "website_id"),
 			inverseJoinColumns=@JoinColumn(name="category_id"))
 	private List<Category> categories;
+	
+	@ManyToMany
+    @JoinTable(name="website_tag",
+        joinColumns=@JoinColumn(name="website_id"),
+        inverseJoinColumns=@JoinColumn(name="tag_id"))
+    private List<Tag> tags;
 
 	public Integer getId() {
 		return id;
@@ -73,6 +80,14 @@ public class Website {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
 	}
 	
 	

@@ -1,5 +1,5 @@
 import { useGetCategoriesQuery } from "../api/apiSlice"
-
+import Badge from 'react-bootstrap/Badge'
 
 export const CategoryContainer = () => {
     const { data: categories, isLoading } = useGetCategoriesQuery()
@@ -9,7 +9,11 @@ export const CategoryContainer = () => {
     console.log(categories)
     return <div>
         <ul>
-            {categories.map(c => <li key={c.id}><b>{c.name}</b><p>{c.description}</p></li>)}
+            {categories.map(category => (
+                <Badge pill bg="primary">
+                    {category.name}
+                </Badge>
+            ))}
         </ul>
     </div>
 
