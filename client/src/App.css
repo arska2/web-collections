@@ -34,11 +34,11 @@
     object-fit: cover;
     border: 1px solid black;
     border-radius: 2%;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }
 
 .website-card-image:hover {
-    transform: scale(2.5);
+    transform: scale(2.0);
 }
 
 body {
