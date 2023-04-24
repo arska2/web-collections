@@ -21,13 +21,21 @@ export const CategoryContainer = () => {
     console.log('categories', categories)
 
     return <div>
-        <ul>
-            {categories.map(category => (
-                <Badge bg={selectedCategories.includes(category.name) ? "success" : "primary"} key={category.id} onClick={() => onCategoryClicked(category.name)}>
+
+        {categories.map(category => (
+            <span className="category-badge" key={category.id}>
+                <Badge bg={selectedCategories.includes(category.name) ? "success" : "primary"}
+
+                    onClick={() => onCategoryClicked(category.name)
+                    }>
                     {category.name}
                 </Badge>
-            ))}
-        </ul>
+            </span>
+
+
+
+        ))}
+
     </div>
 
 }
