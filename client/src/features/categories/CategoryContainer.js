@@ -11,8 +11,17 @@ export const CategoryContainer = () => {
     console.log('selected', selectedCategories)
 
     const onCategoryClicked = (categoryName) => {
-        if (selectedCategories.includes(categoryName)) dispatch(removeSelectedCategory(categoryName))
-        else dispatch(addSelectedCategory(categoryName))
+        // if (selectedCategories.includes(categoryName)) dispatch(removeSelectedCategory(categoryName))
+        // else dispatch(addSelectedCategory(categoryName))
+
+        if (categoryName === selectedCategories[0]) {
+            dispatch(removeSelectedCategory(selectedCategories[0]))
+            return
+        }
+        dispatch(removeSelectedCategory(selectedCategories[0]))
+        dispatch(addSelectedCategory(categoryName))
+
+
 
     }
 
@@ -23,14 +32,15 @@ export const CategoryContainer = () => {
     return <div>
 
         {categories.map(category => (
-            <span className="category-badge" key={category.id}>
-                <Badge bg={selectedCategories.includes(category.name) ? "success" : "primary"}
-
+            <h4 className="category-badge" key={category.id}>
+                <Badge
+                    text={selectedCategories.includes(category.name) ? "dark" : "light"}
+                    bg={selectedCategories.includes(category.name) ? "primary" : "dark"}
                     onClick={() => onCategoryClicked(category.name)
                     }>
                     {category.name}
                 </Badge>
-            </span>
+            </h4>
 
 
 

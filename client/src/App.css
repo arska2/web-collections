@@ -26,6 +26,7 @@
 
 
 .category-badge {
+    display: inline-block;
     margin-left: 5px;
 }
 
@@ -42,5 +43,5 @@
 }
 
 body {
-    background-color: rgb(204, 204, 204);
+    background-color: rgb(240, 250, 253);
 }

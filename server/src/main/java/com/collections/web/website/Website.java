@@ -19,7 +19,7 @@ public class Website {
 	private String name;
 	private String description;
 	private String url;
-	private String image;
+
 	
 	@ManyToMany
 	@JoinTable(
@@ -66,13 +66,6 @@ public class Website {
 		this.url = url;
 	}
 
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
 
 	public List<Category> getCategories() {
 		return categories;

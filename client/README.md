@@ -1,8 +1,8 @@
 # Notes regarding the App
 
-run the screenshot robot with a line like this:
-python -m robot -d results --variable url:https://www.is.fi/ --variable filename:iltasanomat screenshots.robot
-
+run the screenshot robots with a line like this:
+python -m robot -d results --variable url:https://www.is.fi/ --variable filename:iltasanomat takeScreenshot.robot
+python -m robot updateScreenshots.robot
 
 
 # Getting Started with Create React App

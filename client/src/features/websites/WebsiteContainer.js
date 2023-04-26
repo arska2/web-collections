@@ -41,7 +41,7 @@ const WebsiteCard = ({ website }) => {
             <main>
                 <img
                     className="website-card-image"
-                    src={`/images/${website.name.toLowerCase().replaceAll(" ", "") + ".png"}`}
+                    src={`/images/${website.url.split('//')[1].replace('www.', '').split('.')[0] + ".png"}`}
                     alt="website screenshot"
                 />
                 <div className="website-card-content">

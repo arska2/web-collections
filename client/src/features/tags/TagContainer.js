@@ -21,14 +21,12 @@ export const TagContainer = () => {
 
     return (
         <div>
-            <table>
-                <tbody>
-                    {tags.map(tag => <tr key={tag.id}>
-                        <td><Badge pill bg={selectedTags.includes(tag.name) ? "info" : "dark"} onClick={() => onTagClicked(tag.name)}>{tag.name.toLowerCase()}</Badge></td>
-                    </tr>)}
-                </tbody>
-            </table>
+            {tags.map(tag =>
+                <h5 className="category-badge" key={tag.id}>
+                    <Badge pill text={selectedTags.includes(tag.name) ? "dark" : "light"} bg={selectedTags.includes(tag.name) ? "info" : "secondary"} onClick={() => onTagClicked(tag.name)}>{tag.name.toLowerCase()}</Badge>
+                </h5>
 
+            )}
         </div>
 
     )
