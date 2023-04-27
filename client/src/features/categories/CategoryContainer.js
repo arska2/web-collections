@@ -32,7 +32,7 @@ export const CategoryContainer = () => {
     return <div>
 
         {categories.map(category => (
-            <h4 className="category-badge" key={category.id}>
+            <h3 className="category-badge" key={category.id}>
                 <Badge
                     text={selectedCategories.includes(category.name) ? "dark" : "light"}
                     bg={selectedCategories.includes(category.name) ? "primary" : "dark"}
@@ -40,7 +40,7 @@ export const CategoryContainer = () => {
                     }>
                     {category.name}
                 </Badge>
-            </h4>
+            </h3>
 
 
 

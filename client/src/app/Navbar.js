@@ -7,30 +7,27 @@ export const Navigation = () => {
 
         <Navbar bg="dark" variant="dark" className="d-flex justify-content-between" expand="lg" collapseOnSelect>
 
-            <Navbar.Brand href="/">WebCenter</Navbar.Brand>
+            <Navbar.Brand href="/" className='ms-4'>WebCenter</Navbar.Brand>
             <Navbar.Toggle aria-controls='navbarScroll' data-bs-target="#navbarScroll" />
+
             <Navbar.Collapse id="navbarScroll">
-                <Nav className="">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/categories">Categories</Nav.Link>
-                    <Nav.Link href="/favourites">Favourites</Nav.Link>
-                </Nav>
-                <Form className="d-flex search-form">
+
+
+                <Form className="d-flex search-form flex-grow-1 me-4">
                     <FormControl
                         type="search"
                         placeholder="Search websites"
-                        className=""
+                        className="me-1"
                         aria-label="Search"
                     />
-                    <Button variant="outline-success">
+                    <Button variant="outline-success ">
                         <b className="bi bi-search">Search</b>
                     </Button>
                 </Form>
-                <Nav className="">
-                    <Nav.Link href="/signup">Sign Up</Nav.Link>
-                    <Nav.Link href="/signin">Sign In</Nav.Link>
-                </Nav>
+
             </Navbar.Collapse>
+
+
 
 
 
