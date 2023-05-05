@@ -5,7 +5,7 @@ import { addSelectedTag, removeSelectedTag } from "../../app/uiSlice"
 
 export const TagContainer = () => {
 
-    const { data: tags, isLoading } = useGetTagsQuery()
+    const { data: tags = [], isLoading } = useGetTagsQuery()
     const selectedTags = useSelector(state => state.uiReducer.selectedTags)
     const dispatch = useDispatch()
 

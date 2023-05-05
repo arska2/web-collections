@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { addSelectedCategory, removeSelectedCategory } from "../../app/uiSlice"
 
 export const CategoryContainer = () => {
-    const { data: categories, isLoading } = useGetCategoriesQuery()
+    const { data: categories = [], isLoading } = useGetCategoriesQuery()
     const selectedCategories = useSelector(state => state.uiReducer.selectedCategories)
     const dispatch = useDispatch()
     console.log('selected', selectedCategories)

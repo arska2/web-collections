@@ -17,6 +17,9 @@ export const apiSlice = createApi({
         }),
         getTags: builder.query({
             query: () => '/tags'
+        }),
+        getUser: builder.query({
+            query: () => '/login'
         })
     })
 })
@@ -25,4 +28,5 @@ export const {
     useGetWebsitesQuery,
     useGetCategoriesQuery,
     useGetTagsQuery,
+    useGetUserQuery,
 } = apiSlice

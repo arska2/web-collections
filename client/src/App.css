@@ -45,3 +45,9 @@
 body {
     background-color: rgb(240, 250, 253);
 }
+
+
+.bg-canvas {
+    position: fixed;
+    z-index: -1;
+}

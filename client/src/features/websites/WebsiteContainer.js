@@ -59,7 +59,7 @@ const WebsiteCard = ({ website }) => {
 
 export const WebsiteContainer = () => {
 
-    const { data: websites, isLoading } = useGetWebsitesQuery()
+    const { data: websites = [], isLoading } = useGetWebsitesQuery()
     const selectedCategories = useSelector(state => state.uiReducer.selectedCategories)
     const selectedTags = useSelector(state => state.uiReducer.selectedTags)
 
