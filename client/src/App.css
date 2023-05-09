@@ -32,14 +32,17 @@
 
 .website-card-image {
     width: 100%;
-    object-fit: cover;
+    height: 0;
+    padding-bottom: 66.66%;
+    background-position: 0 0;
+    background-size: cover;
     border: 1px solid black;
     border-radius: 2%;
-    transition: transform 0.1s ease-in-out;
+    transition: background-position 1s ease-in-out;
 }
 
 .website-card-image:hover {
-    transform: scale(2.0);
+    background-position: 100% 0;
 }
 
 body {

@@ -1,7 +1,7 @@
 import { Row, Col } from "react-bootstrap"
-import { CategoryContainer } from "../categories/CategoryContainer"
-import { TagContainer } from "../tags/TagContainer"
-import { WebsiteContainer } from "../websites/WebsiteContainer"
+import { CategoryContainer } from "./CategoryContainer"
+import { TagContainer } from "./TagContainer"
+import { WebsiteContainer } from "./WebsiteContainer"
 
 export const HomePage = () => {
 

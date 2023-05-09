@@ -1,8 +1,10 @@
 import { Badge } from "react-bootstrap";
 import { useGetWebsitesQuery } from "../api/apiSlice"
 import Spinner from 'react-bootstrap/Spinner';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
+import { setSelectedWebsite } from "../../app/uiSlice";
+import { useNavigate } from "react-router";
 
 
 const buttonTexts = [
@@ -32,18 +34,24 @@ const buttonTexts = [
 
 
 
-const WebsiteCard = ({ website }) => {
+const WebsiteCard = ({ website, onEditClicked }) => {
+
+
+
+
     return (
         <article className="website-card" key={website.id} >
-            <header>
-                <h2 style={{ whiteSpace: 'nowrap' }}>{website.name}</h2>
+            <header style={{ display: 'flex', alignItems: 'center' }}>
+                <h2 style={{ whiteSpace: 'nowrap', display: 'inline-block', marginRight: '1rem' }}>{website.name}</h2>
+                <Badge bg="secondary" style={{ display: 'inline-block' }} onClick={() => onEditClicked()}>Edit</Badge>
             </header>
             <main>
-                <img
+                <div
                     className="website-card-image"
-                    src={`/images/${website.url.split('//')[1].replace('www.', '').split('.')[0] + ".png"}`}
-                    alt="website screenshot"
-                />
+                    style={{
+                        backgroundImage: `url(/images/${website.url.split('//')[1].replace('www.', '').split('.')[0] + ".png"})`
+                    }}
+                ></div>
                 <div className="website-card-content">
                     <p>{website.description}</p>
                 </div>
@@ -63,6 +71,8 @@ export const WebsiteContainer = () => {
     const selectedCategories = useSelector(state => state.uiReducer.selectedCategories)
     const selectedTags = useSelector(state => state.uiReducer.selectedTags)
 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     let filtWebsites = websites
 
     if (selectedCategories.length >= 1) {
@@ -75,8 +85,16 @@ export const WebsiteContainer = () => {
 
     if (isLoading) return <Spinner animation="border" variant="primary" />
     console.log('websites', websites)
+
+    const onEditClicked = (website) => {
+        dispatch(setSelectedWebsite(website))
+        navigate('/edit')
+
+    }
+
+
     return (<div className="website-cards">
-        {filtWebsites.map(website => <WebsiteCard website={website} key={website.id} />)}
+        {filtWebsites.map(website => <WebsiteCard website={website} key={website.id} onEditClicked={() => onEditClicked(website)} />)}
     </div>)
 
 }

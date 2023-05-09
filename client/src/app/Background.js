@@ -5,8 +5,8 @@ const world = {
     plane: {
         width: 400,
         height: 400,
-        widthSegments: 80,
-        heightSegments: 80,
+        widthSegments: 50,
+        heightSegments: 50,
         r: 0,
         g: 0.19,
         b: 0.4
