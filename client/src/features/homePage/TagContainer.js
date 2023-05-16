@@ -20,7 +20,7 @@ export const TagContainer = () => {
     console.log('tags', tags)
 
     return (
-        <div>
+        <div className="tag-container">
             {tags.map(tag =>
                 <h5 className="category-badge" key={tag.id}>
                     <Badge pill text={selectedTags.includes(tag.name) ? "dark" : "light"} bg={selectedTags.includes(tag.name) ? "info" : "secondary"} onClick={() => onTagClicked(tag.name)}>{tag.name.toLowerCase()}</Badge>

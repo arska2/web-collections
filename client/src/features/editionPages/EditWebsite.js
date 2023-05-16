@@ -1,26 +1,57 @@
 import { useState } from "react"
-import { Button, Form, Badge } from 'react-bootstrap';
+import { Button, Form, Badge, Popover, OverlayTrigger, ListGroup } from 'react-bootstrap';
 
 import { useSelector } from "react-redux"
+import { useGetCategoriesQuery, useGetTagsQuery } from "../api/apiSlice";
 
 
 export const EditWebsite = () => {
+    const { data: tags = [], isLoading: isLoadingTags } = useGetTagsQuery()
+    const { data: categories = [], isLoading: isLoadingCategories } = useGetCategoriesQuery()
     const website = useSelector(state => state.uiReducer.selectedWebsite)
     console.log(website)
     const [title, onTitleChanged] = useState(website.name)
     const [description, onDescriptionChanged] = useState(website.description)
-    const [categories, setCategories] = useState(website.categories)
-    const [tags, setTags] = useState(website.tags)
+    const [newTags, setNewTags] = useState(website.tags.map(t => t.name))
+    const [newCategories, setNewCategories] = useState(website.categories.map(c => c.name))
+
+
+
+
+
     const onSaveWebsiteClicked = () => {
+
         console.log('clicked')
     }
 
-    if (Object.keys(website).length == 0) return <p>Something went wrong</p>
+    const onTagClicked = (tag) => {
+        const currentTags = newTags
+        console.log('currentTags', currentTags)
+        if (currentTags.includes(tag.name)) {
+            setNewTags(currentTags.filter(t => t !== tag.name))
+        } else {
+            setNewTags([...currentTags, tag.name])
+        }
+    }
+
+    const onCategoryClicked = (category) => {
+        const currentCategories = newCategories
+        if (currentCategories.includes(category.name)) {
+            setNewCategories(currentCategories.filter(c => c !== category.name))
+        } else {
+            setNewCategories([...currentCategories, category.name])
+        }
+    }
+
+
+    if (Object.keys(website).length === 0 || isLoadingCategories || isLoadingTags) return <p>Something went wrong</p>
+
     return (<>
         <div style={{ backgroundColor: "white" }}>
+            <h1>Edit Information About Website: {website.url}</h1>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Title</Form.Label>
+                    <Form.Label><h2><b>Title</b></h2></Form.Label>
                     <Form.Control type="text" placeholder="Enter new website title" value={title} onChange={onTitleChanged} />
                     <Form.Text className="text-muted">
                         Edit website title
@@ -28,7 +59,7 @@ export const EditWebsite = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label><h2><b>Description</b></h2></Form.Label>
                     <Form.Control type="textarea" placeholder="Enter new description" value={description} onChange={onDescriptionChanged} />
                     <Form.Text className="text-muted">
                         Edit website description
@@ -36,29 +67,58 @@ export const EditWebsite = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Categories</Form.Label>
+
                     <Form.Text>
+                        <OverlayTrigger
+                            trigger="click"
+                            key={'bottom'}
+                            placement={'bottom'}
+                            overlay={
+                                <Popover id={`popover-positioned-${'bottom2'}`}>
+                                    <Popover.Header as="h3">Select Categories</Popover.Header>
+                                    <Popover.Body>
+                                        <ListGroup as="ul">
+                                            {categories.map(category => <ListGroup.Item active={newCategories.includes(category.name) ? true : false} as="li" key={category.id} onClick={() => onCategoryClicked(category)}>{category.name}</ListGroup.Item>)}
+                                        </ListGroup>
 
-                        <h3 className="category-badge" >
-                            {categories.map(category => <><Badge pill text={"light"} bg={"dark"} key={category.id}>{category.name.toLowerCase()}</Badge>
-                                <h6><Badge bg={"danger"}>remove</Badge></h6></>)}
-
-                        </h3>
-
+                                    </Popover.Body>
+                                </Popover>
+                            }
+                        >
+                            <Button variant="success">Edit Categories</Button>
+                        </OverlayTrigger>
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Tags</Form.Label>
+
                     <Form.Text>
-                        <h5 className="category-badge">
-                            {tags.map(tag => <Badge pill text={"light"} bg={"secondary"} >{tag.name.toLowerCase()}</Badge>)}
-                        </h5>
+                        <OverlayTrigger
+                            trigger="click"
+                            key={'bottom'}
+                            placement={'bottom'}
+                            overlay={
+                                <Popover id={`popover-positioned-${'bottom'}`}>
+                                    <Popover.Header as="h3">Select tags</Popover.Header>
+                                    <Popover.Body>
+                                        <ListGroup as="ul">
+                                            {tags.map(tag => <ListGroup.Item active={newTags.includes(tag.name) ? true : false} as="li" key={tag.id} onClick={() => onTagClicked(tag)}>{tag.name}</ListGroup.Item>)}
+                                        </ListGroup>
+
+                                    </Popover.Body>
+                                </Popover>
+                            }
+                        >
+                            <Button variant="success">Edit Tags</Button>
+                        </OverlayTrigger>
+
 
                     </Form.Text>
                 </Form.Group>
 
-                <Button variant="primary" type="submit" onClick={onSaveWebsiteClicked}>
+
+
+                <Button variant="primary" onClick={onSaveWebsiteClicked}>
                     Save Website Information
                 </Button>
             </Form>

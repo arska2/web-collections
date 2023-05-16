@@ -29,7 +29,7 @@ export const CategoryContainer = () => {
     if (isLoading) return <Spinner animation="border" variant="primary" />
     console.log('categories', categories)
 
-    return <div>
+    return <div className="category-container">
 
         {categories.map(category => (
             <h3 className="category-badge" key={category.id}>

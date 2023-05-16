@@ -56,7 +56,9 @@ const WebsiteCard = ({ website, onEditClicked }) => {
                     <p>{website.description}</p>
                 </div>
             </main>
+
             <Button variant="dark" size="sm" style={{ fontSize: '1.1em' }} href={website.url} target="_blank" rel="noreferrer">{buttonTexts[Math.floor(Math.random() * buttonTexts.length)]}</Button>
+
             <footer style={{ backgroundColor: 'lightgray' }}>{website.tags.map(tag => <Badge pill bg="secondary" key={"" + website.id + tag.id}>{tag.name}</Badge>)}</footer>
         </article>
     )

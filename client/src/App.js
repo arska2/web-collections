@@ -2,7 +2,6 @@ import { useGetWebsitesQuery } from "./features/api/apiSlice";
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import { HomePage } from "./features/homePage/HomePage";
 import { Navigation } from "./app/Navbar";
-import { Background } from "./app/Background";
 import { Login } from "./features/login/Login"
 import { Signup } from "./features/login/Signup"
 import { EditWebsite } from "./features/editionPages/EditWebsite";
