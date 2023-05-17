@@ -14,7 +14,6 @@ export const HomePage = () => {
             </Row>
             <Row>
                 <TagContainer />
-
             </Row>
             <Row>
                 <WebsiteContainer />

@@ -6,7 +6,7 @@ export const Navigation = () => {
 
     return (
 
-        <Navbar bg="dark" variant="dark" className="d-flex justify-content-between" expand="lg" collapseOnSelect>
+        <Navbar bg="dark" variant="dark" className="d-flex justify-content-between navigation" expand="lg" collapseOnSelect>
 
             <Navbar.Brand className='ms-4'><Link to="/">WebCenter</Link></Navbar.Brand>
             <Navbar.Toggle aria-controls='navbarScroll' data-bs-target="#navbarScroll" />
