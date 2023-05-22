@@ -1,8 +1,18 @@
+import { useState } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setSearch } from './uiSlice';
 
 
 export const Navigation = () => {
+
+    const [searchText, setSearchText] = useState("")
+    const dispatch = useDispatch()
+
+    const onSearchClicked = () => {
+        dispatch(setSearch(searchText))
+    }
 
     return (
 
@@ -20,8 +30,9 @@ export const Navigation = () => {
                         placeholder="Search websites"
                         className="me-1"
                         aria-label="Search"
+                        onChange={ev => setSearchText(ev.target.value)}
                     />
-                    <Button variant="outline-success ">
+                    <Button variant="outline-success " onClick={onSearchClicked}>
                         <b className="bi bi-search">Search</b>
                     </Button>
                 </Form>

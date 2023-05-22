@@ -17,7 +17,7 @@ export const WebsiteContainer = () => {
     const selectedCategories = useSelector(state => state.uiReducer.selectedCategories)
     const selectedTags = useSelector(state => state.uiReducer.selectedTags)
 
-
+    const searchText = useSelector(state => state.uiReducer.search)
 
     let filtWebsites = websites
 
@@ -28,6 +28,13 @@ export const WebsiteContainer = () => {
         filtWebsites = filtWebsites.filter(website => website.tags.some(tag => selectedTags.includes(tag.name)))
     }
 
+    if (searchText) {
+        filtWebsites = filtWebsites.filter(website => {
+            return website.name.toLowerCase().includes(searchText.toLowerCase())
+                || website.description.toLowerCase().includes(searchText.toLowerCase())
+                || website.url.toLowerCase().includes(searchText.toLowerCase())
+        })
+    }
 
     if (isLoading) return <Spinner animation="border" variant="primary" />
     console.log('websites', websites)
@@ -36,7 +43,7 @@ export const WebsiteContainer = () => {
 
     return (<div className="conatiner mx-auto mt-4">
         <div className="row">
-            {filtWebsites.map(website => <Website website={website} />)}
+            {filtWebsites.map(website => <Website website={website} key={website.id} />)}
         </div>
 
     </div>)
