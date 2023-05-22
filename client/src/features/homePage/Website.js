@@ -4,30 +4,6 @@ import { setSelectedWebsite } from "../../app/uiSlice"
 
 
 
-
-const buttonTexts = [
-    "Check it out!",
-    "Visit Website",
-    "Go to site",
-    "See it in action",
-    "Explore",
-    "Learn more",
-    "Discover",
-    "Experience it now",
-    "Start browsing",
-    "Take a look",
-    "Get started",
-    "Try it out",
-    "Enter",
-    "Join the fun",
-    "Get to know it",
-    "Experience now",
-    "Explore more",
-    "Take a tour",
-    "Learn about it",
-    "Begin now",
-];
-
 export const Website = ({ website }) => {
 
     const dispatch = useDispatch()
@@ -55,8 +31,11 @@ export const Website = ({ website }) => {
                     <h5 className="card-title">{name}</h5>
                     <h6 className="card-subtitle">{url}</h6>
                     <p className="card-text">{description}</p>
-                    <a href={url} className="btn mr-2"><i className="fas fa-link">Visit Site</i></a>
-                    <a href={url} className="btn mr-2"><i className="fab fa-like">Like</i></a>
+                    <a href={url} className="btn me-2" target="_blank"><b className="fas fa-link">Visit Site</b></a>
+                    <a href={'tmp'} className="btn me-2" target="_blank"><b className="fab fa-like">Like</b></a>
+                    <a href={'tmp'} className="btn me-2" target="_blank"><b className="fab fa-like">Add to Favorites</b></a>
+                    <a className="btn me-2" onClick={onEditClicked}><b className="fab fa-edit">Edit</b></a>
+
                 </div>
             </div>
         </div>
