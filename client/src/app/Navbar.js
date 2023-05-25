@@ -32,17 +32,17 @@ export const Navigation = () => {
                         aria-label="Search"
                         onChange={ev => setSearchText(ev.target.value)}
                     />
-                    <Button variant="outline-success " onClick={onSearchClicked}>
+                    <Button onClick={onSearchClicked}>
                         <b className="bi bi-search">Search</b>
                     </Button>
                 </Form>
-                <Button variant="outline-secondary me-1">
-                    <Link to="/login"><b className="">Log In</b></Link>
+                <Button variant=" me-1">
+                    <Link to="/login"><b className="nav-login">Log In</b></Link>
 
                 </Button>
 
-                <Button variant="outline-primary me-4">
-                    <Link to="/signup"> <b className="">Sign Up</b></Link>
+                <Button variant=" me-4">
+                    <Link to="/signup" className="nav-login"> <b className="">Sign Up</b></Link>
 
                 </Button>
             </Navbar.Collapse>
