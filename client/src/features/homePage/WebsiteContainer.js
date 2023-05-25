@@ -2,7 +2,6 @@ import { useGetWebsitesQuery } from "../api/apiSlice"
 import Spinner from 'react-bootstrap/Spinner';
 import { useSelector } from "react-redux";
 import { Website } from "./Website";
-import './websites.css'
 
 
 

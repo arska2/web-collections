@@ -4,7 +4,7 @@ import { TagContainer } from "./TagContainer"
 import { WebsiteContainer } from "./WebsiteContainer"
 import { useState } from "react"
 import { AddWebpage } from "./AddWebpage"
-
+import './HomePage.css'
 
 
 
@@ -30,7 +30,7 @@ export const HomePage = () => {
                         </Row>
                     </Col>
                     <Col className="d-flex justify-content-center">
-                        <Button onClick={() => { const c = addWebsiteOpen; setAddWebsiteOpen(!c) }}><b>Add Website</b></Button>
+                        <Button className="add-button" onClick={() => { const c = addWebsiteOpen; setAddWebsiteOpen(!c) }}><b>Add Website</b></Button>
                         <AddWebpage open={addWebsiteOpen} handleClose={() => setAddWebsiteOpen(false)} />
                     </Col>
                 </Row>

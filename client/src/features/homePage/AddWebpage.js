@@ -6,7 +6,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import TextField from '@mui/material/TextField';
 import { forwardRef, useState } from "react"
-import { useGetCategoriesQuery, useGetTagsQuery } from '../api/apiSlice';
+import { useCreateWebsiteMutation, useGetCategoriesQuery, useGetTagsQuery } from '../api/apiSlice';
 import { Button, Badge } from 'react-bootstrap';
 import { Grid } from '@mui/material';
 
@@ -22,6 +22,11 @@ export const AddWebpage = ({ open, handleClose }) => {
     const { data: categories = [], isLoading: isLoadingCategories } = useGetCategoriesQuery()
     const [newTags, setNewTags] = useState([])
     const [newCategories, setNewCategories] = useState([])
+    const [createWebsite] = useCreateWebsiteMutation()
+    const [url, setUrl] = useState("")
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
+
 
     const onTagClicked = (tag) => {
         const currentTags = newTags
@@ -43,6 +48,21 @@ export const AddWebpage = ({ open, handleClose }) => {
     }
 
 
+    const onAddClicked = () => {
+        const website = {
+            url,
+            name,
+            description,
+            tags: tags.filter(t => newTags.includes(t.name)),
+            categories: categories.filter(c => newCategories.includes(c.name))
+        }
+        createWebsite(website).unwrap().then(response => {
+            console.log(response)
+            handleClose()
+        })
+
+    }
+
     return (
         <Dialog
             open={open}
@@ -54,7 +74,7 @@ export const AddWebpage = ({ open, handleClose }) => {
             <DialogTitle>{"Add new website"}</DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-slide-description">
-                    Fill in the data to add a new website
+                    <b>Fill in the data to add a new website</b>
                 </DialogContentText>
                 <TextField
                     autoFocus
@@ -77,14 +97,29 @@ export const AddWebpage = ({ open, handleClose }) => {
                     fullWidth
                     variant="standard"
                 />
+                <DialogContentText id="alert-dialog-slide-description">
+                    <b>Select relevant category / categories</b>
+                </DialogContentText>
                 <Grid container>
-                    {categories.map(category => <Grid item onClick={() => onCategoryClicked(category)}><Badge>{category.name}</Badge></Grid>)}
+                    {categories.map(category =>
+                        <Grid item onClick={() => onCategoryClicked(category)}>
+                            <Badge className={newCategories.includes(category.name) ? "selected-category" : "default-category"}
+                            >
+                                {category.name}
+                            </Badge>
+                        </Grid>
+                    )}
                 </Grid>
-
+                <DialogContentText id="alert-dialog-slide-description">
+                    <b>Select relevant tags</b>
+                </DialogContentText>
                 <Grid container>
-                    {tags.map(tag => <Grid item key={tag.id} onClick={() => onTagClicked(tag)}><Badge>{tag.name}</Badge></Grid>)}
-
-
+                    {tags.map(tag =>
+                        <Grid item key={tag.id} onClick={() => onTagClicked(tag)}>
+                            <Badge className={newTags.includes(tag.name) ? "selected-tag" : "default-tag"}>
+                                {tag.name}
+                            </Badge>
+                        </Grid>)}
                 </Grid>
 
 
@@ -92,8 +127,8 @@ export const AddWebpage = ({ open, handleClose }) => {
 
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Disagree</Button>
-                <Button onClick={handleClose}>Agree</Button>
+                <Button onClick={handleClose}>Cancel</Button>
+                <Button onClick={onAddClicked}>Add Site</Button>
             </DialogActions>
         </Dialog>)
 }

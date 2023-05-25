@@ -34,8 +34,8 @@ export const CategoryContainer = () => {
         {categories.map(category => (
             <h3 className="category-badge" key={category.id}>
                 <Badge
-                    text={selectedCategories.includes(category.name) ? "dark" : "light"}
-                    bg={selectedCategories.includes(category.name) ? "primary" : "dark"}
+                    className={selectedCategories.includes(category.name) ? "selected-category" : "default-category"}
+
                     onClick={() => onCategoryClicked(category.name)
                     }>
                     {category.name}
