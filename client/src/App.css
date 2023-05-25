@@ -40,7 +40,8 @@ body {
 }
 
 .navigation {
-    background: linear-gradient(to bottom, var(--color1), #000000)
+    background: linear-gradient(to bottom, var(--color1), #000000);
+    height: 8vh;
 }
 
 

@@ -40,7 +40,7 @@ export const WebsiteContainer = () => {
 
 
 
-    return (<div className="conatiner mx-auto mt-4">
+    return (<div className=" mx-auto mt-4 website-container">
         <div className="row">
             {filtWebsites.map(website => <Website website={website} key={website.id} />)}
         </div>

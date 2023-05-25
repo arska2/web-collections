@@ -4,6 +4,7 @@ import { TagContainer } from "./TagContainer"
 import { WebsiteContainer } from "./WebsiteContainer"
 import { useState } from "react"
 import { AddWebpage } from "./AddWebpage"
+import Fab from '@mui/material/Fab'
 import './HomePage.css'
 
 
@@ -18,7 +19,7 @@ export const HomePage = () => {
 
     console.log("state", addWebsiteOpen)
     return (
-        <div>
+        <div style={{ position: "relative", minHeight: "90vh" }}>
             <Container fluid >
 
                 <Row>
@@ -30,8 +31,11 @@ export const HomePage = () => {
                 <Row >
                     <WebsiteContainer />
                 </Row>
-                <Button className="add-button" onClick={() => { const c = addWebsiteOpen; setAddWebsiteOpen(!c) }}><b>Add Website</b></Button>
+
                 <AddWebpage open={addWebsiteOpen} handleClose={() => setAddWebsiteOpen(false)} />
+                <Fab style={{ position: "absolute" }} className={addWebsiteOpen ? "add-button-pressed" : "add-button"} variant="extended" aria-label="add" onClick={() => { const c = addWebsiteOpen; setAddWebsiteOpen(!c) }}>
+                    Add Website
+                </Fab>
             </Container>
 
         </div>
