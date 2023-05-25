@@ -70,7 +70,7 @@ export const EditWebsite = () => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label><h2><b>Title</b></h2></Form.Label>
                     <Form.Control type="text" placeholder="Enter new website title" value={title} onChange={ev => setTitle(ev.target.value)} />
-                    <Form.Text className="text-muted">
+                    <Form.Text className="text-muted info-text">
                         Edit website title
                     </Form.Text>
                 </Form.Group>
@@ -78,7 +78,7 @@ export const EditWebsite = () => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label><h2><b>Description</b></h2></Form.Label>
                     <Form.Control type="textarea" placeholder="Enter new description" value={description} onChange={ev => setDescription(ev.target.value)} />
-                    <Form.Text className="text-muted">
+                    <Form.Text className="text-muted info-text">
                         Edit website description
                     </Form.Text>
                 </Form.Group>
