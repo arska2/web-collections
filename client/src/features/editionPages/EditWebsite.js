@@ -1,27 +1,44 @@
 import { useState } from "react"
-import { Button, Form, Badge, Popover, OverlayTrigger, ListGroup } from 'react-bootstrap';
+import { Button, Form, Popover, OverlayTrigger, ListGroup } from 'react-bootstrap';
 
 import { useSelector } from "react-redux"
-import { useGetCategoriesQuery, useGetTagsQuery } from "../api/apiSlice";
-
+import { useGetCategoriesQuery, useGetTagsQuery, useUpdateWebsiteMutation } from "../api/apiSlice";
+import './EditWebsite.css'
+import { useNavigate } from "react-router";
 
 export const EditWebsite = () => {
     const { data: tags = [], isLoading: isLoadingTags } = useGetTagsQuery()
     const { data: categories = [], isLoading: isLoadingCategories } = useGetCategoriesQuery()
     const website = useSelector(state => state.uiReducer.selectedWebsite)
     console.log(website)
-    const [title, onTitleChanged] = useState(website.name)
-    const [description, onDescriptionChanged] = useState(website.description)
+    const [title, setTitle] = useState(website.name)
+    const [description, setDescription] = useState(website.description)
     const [newTags, setNewTags] = useState(website.tags.map(t => t.name))
     const [newCategories, setNewCategories] = useState(website.categories.map(c => c.name))
 
+    const [updateWebsite] = useUpdateWebsiteMutation()
 
 
-
+    const navigate = useNavigate()
 
     const onSaveWebsiteClicked = () => {
-
         console.log('clicked')
+        const modifiedWebsite = {
+            id: website.id,
+            url: website.url,
+            name: title,
+            description,
+            tags: tags.filter(t => newTags.includes(t.name)),
+            categories: categories.filter(c => newCategories.includes(c.name))
+
+
+        }
+        console.log('updates', modifiedWebsite)
+        updateWebsite(modifiedWebsite).unwrap().then(response => {
+            console.log('response', response)
+            navigate('/')
+        })
+
     }
 
     const onTagClicked = (tag) => {
@@ -47,12 +64,12 @@ export const EditWebsite = () => {
     if (Object.keys(website).length === 0 || isLoadingCategories || isLoadingTags) return <p>Something went wrong</p>
 
     return (<>
-        <div style={{ backgroundColor: "white" }}>
+        <div className="edit-website-page">
             <h1>Edit Information About Website: {website.url}</h1>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label><h2><b>Title</b></h2></Form.Label>
-                    <Form.Control type="text" placeholder="Enter new website title" value={title} onChange={onTitleChanged} />
+                    <Form.Control type="text" placeholder="Enter new website title" value={title} onChange={ev => setTitle(ev.target.value)} />
                     <Form.Text className="text-muted">
                         Edit website title
                     </Form.Text>
@@ -60,7 +77,7 @@ export const EditWebsite = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label><h2><b>Description</b></h2></Form.Label>
-                    <Form.Control type="textarea" placeholder="Enter new description" value={description} onChange={onDescriptionChanged} />
+                    <Form.Control type="textarea" placeholder="Enter new description" value={description} onChange={ev => setDescription(ev.target.value)} />
                     <Form.Text className="text-muted">
                         Edit website description
                     </Form.Text>
