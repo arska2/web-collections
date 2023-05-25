@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const apiSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
-    tagTypes: ['Website'],
+    tagTypes: ['Website', 'Category', 'Tag'],
     endpoints: (builder) => ({
         getWebsites: builder.query({
             query: () => '/websites',
@@ -38,12 +38,43 @@ export const apiSlice = createApi({
         getCategories: builder.query({
             query: () => '/categories'
         }),
+        createCategory: builder.mutation({
+            query: category => ({
+                url: '/categories',
+                method: 'POST',
+                body: category
+            }),
+            invalidatesTags: ['Category']
+        }),
+        deleteCategory: builder.mutation({
+            query: category => ({
+                url: `/categories/${category.id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['Category']
+        }),
+
         getTags: builder.query({
             query: () => '/tags'
         }),
         getUser: builder.query({
             query: () => '/login'
-        })
+        }),
+        createTag: builder.mutation({
+            query: tag => ({
+                url: '/tags',
+                method: 'POST',
+                body: tag
+            }),
+            invalidatesTags: ['Tag']
+        }),
+        deleteTag: builder.mutation({
+            query: tag => ({
+                url: `/tags/${tag.id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['Tag']
+        }),
     })
 })
 
@@ -53,6 +84,10 @@ export const {
     useUpdateWebsiteMutation,
     useDeleteWebsiteMutation,
     useGetCategoriesQuery,
+    useCreateCategoryMutation,
+    useDeleteCategoryMutation,
     useGetTagsQuery,
+    useCreateTagMutation,
+    useDeleteTagMutation,
     useGetUserQuery,
 } = apiSlice
