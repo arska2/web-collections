@@ -52,6 +52,8 @@ public class SecurityConfiguration {
 			.requestMatchers(HttpMethod.GET, "/api/categories").permitAll()
 			.requestMatchers(HttpMethod.GET, "/api/websites").permitAll()
 			.requestMatchers(HttpMethod.POST, "/api/websites").permitAll()
+			.requestMatchers(HttpMethod.PUT, "/api/websites/*").permitAll()
+			.requestMatchers(HttpMethod.DELETE, "/api/websites/*").permitAll()
 			.requestMatchers(HttpMethod.GET, "/api/tags").permitAll()
 			.requestMatchers("/api/users").hasAuthority("admin")
 			.requestMatchers("/api/*").authenticated()
