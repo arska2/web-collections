@@ -2,9 +2,7 @@
     --gradient: linear-gradient(to left top, var(--color1) 10%, var(--color3) 90%) !important;
 }
 
-body {
-    background: #111 !important;
-}
+
 
 .card {
     background: #222;
@@ -19,11 +17,19 @@ body {
 }
 
 .brand {
-    background: linear-gradient(to left bottom, var(--color3-o) 10%, var(--color3) 90%);
+    background: linear-gradient(to left bottom, var(--color2) 10%, var(--color3) 90%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
 }
+
+.brand:hover {
+    background: linear-gradient(to left bottom, var(--color2-o) 10%, var(--color3-o) 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
 
 .default-tag {
     background: linear-gradient(to left bottom, var(--color3) 10%, var(--color2) 90%);

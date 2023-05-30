@@ -35,7 +35,7 @@
 }
 
 body {
-    background: linear-gradient(to top, var(--color1), #000000);
+    background: linear-gradient(0deg, #000000, var(--color2)20%, var(--color1) 50%, #000000 90%);
     min-height: 100vh;
 }
 
