@@ -1,9 +1,11 @@
 *** Settings ***
-Library           SeleniumLibrary
+Library     SeleniumLibrary
+
 
 *** Variables ***
-${BROWSER}        chrome
-${DELAY}          3
+${BROWSER}      chrome
+${DELAY}        3
+
 
 *** Keywords ***
 Take Screenshot
@@ -13,5 +15,5 @@ Take Screenshot
     Maximize Browser Window
     Sleep    ${DELAY}
     Capture Page Screenshot
-    ...              ${image_name}
+    ...    ${image_name}
     Close Browser
