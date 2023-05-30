@@ -82,6 +82,8 @@ export const AddWebpage = ({ open, handleClose }) => {
                     label="Link"
                     fullWidth
                     variant="standard"
+                    value={url}
+                    onChange={ev => setUrl(ev.target.value)}
                 />
                 <TextField
                     autoFocus
@@ -89,6 +91,8 @@ export const AddWebpage = ({ open, handleClose }) => {
                     label="Title"
                     fullWidth
                     variant="standard"
+                    value={name}
+                    onChange={ev => setName(ev.target.value)}
                 />
                 <TextField
                     autoFocus
@@ -96,13 +100,15 @@ export const AddWebpage = ({ open, handleClose }) => {
                     label="Description"
                     fullWidth
                     variant="standard"
+                    value={description}
+                    onChange={ev => setDescription(ev.target.value)}
                 />
                 <DialogContentText id="alert-dialog-slide-description">
                     <b>Select relevant category / categories</b>
                 </DialogContentText>
                 <Grid container>
                     {categories.map(category =>
-                        <Grid item onClick={() => onCategoryClicked(category)}>
+                        <Grid item key={category.id} onClick={() => onCategoryClicked(category)}>
                             <Badge className={newCategories.includes(category.name) ? "selected-category" : "default-category"}
                             >
                                 {category.name}

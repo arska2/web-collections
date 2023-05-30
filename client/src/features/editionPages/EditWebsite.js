@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button, Form, Popover, OverlayTrigger, ListGroup } from 'react-bootstrap';
 
 import { useSelector } from "react-redux"
-import { useGetCategoriesQuery, useGetTagsQuery, useUpdateWebsiteMutation } from "../api/apiSlice";
+import { useDeleteWebsiteMutation, useGetCategoriesQuery, useGetTagsQuery, useUpdateWebsiteMutation } from "../api/apiSlice";
 import './EditWebsite.css'
 import { useNavigate } from "react-router";
 
@@ -17,7 +17,7 @@ export const EditWebsite = () => {
     const [newCategories, setNewCategories] = useState(website.categories.map(c => c.name))
 
     const [updateWebsite] = useUpdateWebsiteMutation()
-
+    const [deleteWebsite] = useDeleteWebsiteMutation()
 
     const navigate = useNavigate()
 
@@ -58,6 +58,14 @@ export const EditWebsite = () => {
         } else {
             setNewCategories([...currentCategories, category.name])
         }
+    }
+
+    const onDeleteWebsiteClicked = () => {
+        console.log('trying to delete')
+        deleteWebsite(website).unwrap().then(response => {
+            console.log('deleted', response)
+            navigate('/')
+        })
     }
 
 
@@ -107,7 +115,7 @@ export const EditWebsite = () => {
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3">
 
                     <Form.Text>
                         <OverlayTrigger
@@ -134,10 +142,18 @@ export const EditWebsite = () => {
                 </Form.Group>
 
 
+                <Form.Group className="mb-3">
+                    <Button variant="primary" onClick={onSaveWebsiteClicked}>
+                        Save Website Information
+                    </Button>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Button variant="danger" onClick={onDeleteWebsiteClicked}>
+                        Delete Website
+                    </Button>
+                </Form.Group>
 
-                <Button variant="primary" onClick={onSaveWebsiteClicked}>
-                    Save Website Information
-                </Button>
+
             </Form>
         </div>
 

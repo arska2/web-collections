@@ -15,11 +15,13 @@ export const Website = ({ website }) => {
     }
     const {
         name,
-        url,
+        url = "default",
         description,
         categories,
         tags
     } = website
+
+
 
 
     return (<>
@@ -32,7 +34,6 @@ export const Website = ({ website }) => {
                     <h6 className="card-subtitle">{url}</h6>
                     <p className="card-text">{description}</p>
                     <a href={url} className="btn me-2" target="_blank"><b className="fas fa-link">Visit Site</b></a>
-                    <a href={'tmp'} className="btn me-2" target="_blank"><b className="fab fa-like">Like</b></a>
                     <a href={'tmp'} className="btn me-2" target="_blank"><b className="fab fa-like">Add to Favorites</b></a>
                     <a className="btn me-2" onClick={onEditClicked}><b className="fab fa-edit">Edit</b></a>
 
