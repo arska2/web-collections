@@ -75,6 +75,27 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ['Tag']
         }),
+        createUser: builder.mutation({
+            query: (user) => ({
+                url: '/login',
+                method: 'POST',
+                body: user
+            })
+        }),
+        loginUser: builder.mutation({
+            query: (user) => ({
+                url: '/login',
+                method: 'PUT',
+                body: user
+            })
+        }),
+        logoutUser: builder.mutation({
+            query: () => ({
+                url: '/login',
+                method: 'DELETE'
+            })
+        }),
+
     })
 })
 
@@ -90,4 +111,8 @@ export const {
     useCreateTagMutation,
     useDeleteTagMutation,
     useGetUserQuery,
+    useCreateUserMutation,
+    useLoginUserMutation,
+    useLogoutUserMutation,
+    useGe
 } = apiSlice

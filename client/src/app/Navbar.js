@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { Navbar, Form, FormControl, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setSearch } from './uiSlice';
+import { Logout } from '../features/login/Logout';
 
 
 export const Navigation = () => {
 
     const [searchText, setSearchText] = useState("")
     const dispatch = useDispatch()
-
+    const user = useSelector(state => state.uiReducer.user)
     const onSearchClicked = () => {
         dispatch(setSearch(searchText))
     }
@@ -36,15 +37,21 @@ export const Navigation = () => {
                         <b className="bi bi-search">Search</b>
                     </Button>
                 </Form>
-                <Button variant=" me-1">
-                    <Link to="/login"><b className="nav-login">Log In</b></Link>
+                {user.id === 0
+                    ?
+                    <div>
+                        <Button variant=" me-1">
+                            <Link to="/login"><b className="nav-login">Log In</b></Link>
 
-                </Button>
+                        </Button>
+                        <Button variant=" me-4">
+                            <Link to="/signup" className="nav-login"> <b className="">Sign Up</b></Link>
 
-                <Button variant=" me-4">
-                    <Link to="/signup" className="nav-login"> <b className="">Sign Up</b></Link>
+                        </Button>
+                    </div>
+                    : <Logout />}
 
-                </Button>
+
             </Navbar.Collapse>
 
 

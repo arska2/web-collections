@@ -4,7 +4,8 @@ const initialState = {
     selectedCategories: [],
     selectedTags: [],
     selectedWebsite: {},
-    search: ""
+    search: "",
+    user: { id: 0, username: "", password: "", role: "", enabled: false }
 };
 
 export const uiSlice = createSlice({
@@ -16,7 +17,8 @@ export const uiSlice = createSlice({
         addSelectedTag: (state, action) => { state.selectedTags = [...state.selectedTags, action.payload] },
         removeSelectedTag: (state, action) => { state.selectedTags = state.selectedTags.filter(tag => tag !== action.payload) },
         setSelectedWebsite: (state, action) => { state.selectedWebsite = action.payload },
-        setSearch: (state, action) => { state.search = action.payload }
+        setSearch: (state, action) => { state.search = action.payload },
+        setUser: (state, action) => { state.user = action.payload }
 
     }
 })
@@ -27,5 +29,6 @@ export const {
     addSelectedTag,
     removeSelectedTag,
     setSelectedWebsite,
-    setSearch
+    setSearch,
+    setUser
 } = uiSlice.actions
