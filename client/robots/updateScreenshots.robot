@@ -1,18 +1,22 @@
 *** Settings ***
-Suite Setup       Connect To Database    pymysql     ${DB_NAME}   ${DB_USERNAME}      ${DB_PASSWORD}     ${DB_HOST}     ${DB_PORT}
-Suite Teardown    Disconnect From Database
-Library           SeleniumLibrary
-Library           DatabaseLibrary
-Library            String
-Resource          takeScreenshot.robot
+Library             SeleniumLibrary
+Library             DatabaseLibrary
+Library             String
+Resource            takeScreenshot.robot
+
+Suite Setup         Connect To Database    pymysql    ${DB_NAME}    ${DB_USERNAME}    ${DB_PASSWORD}    ${DB_HOST}    ${DB_PORT}
+Suite Teardown      Disconnect From Database
+
+
 *** Variables ***
-${BROWSER}        chrome
-${DELAY}          3
-${DB_HOST}        localhost
-${DB_PORT}        3306 
-${DB_NAME}        web_collections 
-${DB_USERNAME}    admin 
-${DB_PASSWORD}    Librarian123 
+${BROWSER}          chrome
+${DELAY}            3
+${DB_HOST}          us-cdbr-east-06.cleardb.net    #localhost
+${DB_PORT}          3306    #3306
+${DB_NAME}          heroku_beb9e92089676e3    #web_collections
+${DB_USERNAME}      bb329fbdf3c076    #admin
+${DB_PASSWORD}      f0d9eb62    #Librarian123
+
 
 *** Test Cases ***
 Get Websites
@@ -22,4 +26,3 @@ Get Websites
         ${filename}=    Set Variable    ${url.split('//')[1].replace('www.', '').split('.')[0]}
         Run Keyword And Ignore Error    Take Screenshot    ${url}    ${filename}
     END
-

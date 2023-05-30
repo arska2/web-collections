@@ -1,10 +1,12 @@
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router"
 import { setSelectedWebsite } from "../../app/uiSlice"
-
+import { useState } from "react"
 
 
 export const Website = ({ website }) => {
+
+    const [imageExists, setImageExists] = useState(true)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -15,20 +17,28 @@ export const Website = ({ website }) => {
     }
     const {
         name,
-        url = "default",
+        url,
         description,
         categories,
         tags
     } = website
 
 
+    const handleImageError = () => {
+        setImageExists(false)
+    }
 
+    const imageSrc = `/images/${url.split('//')[1].replace('www.', '').split('.')[0] + ".png"}`
 
     return (<>
 
         <div className="col-md-3">
             <div className="card">
-                <img src={`/images/${url.split('//')[1].replace('www.', '').split('.')[0] + ".png"}`} className="card-img-top" alt="website image" />
+                {imageExists
+                    ? (<img src={imageSrc} className="card-img-top" onError={handleImageError} alt="img header" />)
+                    : (<img src="/images/default.png" className="card-img-top" alt="img header" />)
+                }
+
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <h6 className="card-subtitle">{url}</h6>

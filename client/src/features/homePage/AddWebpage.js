@@ -58,6 +58,11 @@ export const AddWebpage = ({ open, handleClose }) => {
         }
         createWebsite(website).unwrap().then(response => {
             console.log(response)
+            setNewTags([])
+            setNewCategories([])
+            setUrl("")
+            setName("")
+            setDescription("")
             handleClose()
         })
 
