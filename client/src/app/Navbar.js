@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setSearch } from './uiSlice';
 import { Logout } from '../features/login/Logout';
+import { AddWebpage } from '../features/homePage/AddWebpage';
 
 
 export const Navigation = () => {
@@ -14,6 +15,9 @@ export const Navigation = () => {
     const onSearchClicked = () => {
         dispatch(setSearch(searchText))
     }
+
+
+
 
     return (
 
@@ -40,16 +44,16 @@ export const Navigation = () => {
                 {user.id === 0
                     ?
                     <div>
-                        <Button variant=" me-1">
+                        <Button variant="me-1">
                             <Link to="/login"><b className="nav-login">Log In</b></Link>
 
                         </Button>
-                        <Button variant=" me-4">
+                        <Button variant="me-4">
                             <Link to="/signup" className="nav-login"> <b className="">Sign Up</b></Link>
 
                         </Button>
                     </div>
-                    : <Logout />}
+                    : <Logout className="nav-login" />}
 
 
             </Navbar.Collapse>

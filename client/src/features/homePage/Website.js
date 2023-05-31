@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { setSelectedWebsite } from "../../app/uiSlice"
 import { useState } from "react"
@@ -7,6 +7,7 @@ import { useState } from "react"
 export const Website = ({ website }) => {
 
     const [imageExists, setImageExists] = useState(true)
+    const user = useSelector(state => state.uiReducer.user)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -30,6 +31,8 @@ export const Website = ({ website }) => {
 
     const imageSrc = `/images/${url.split('//')[1].replace('www.', '').split('.')[0] + ".png"}`
 
+
+
     return (<>
 
         <div className="col-md-3">
@@ -42,10 +45,13 @@ export const Website = ({ website }) => {
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <h6 className="card-subtitle">{url}</h6>
-                    <p className="card-text">{description}</p>
+                    <div className="card-text">
+                        <p >{description}</p>
+                    </div>
+
                     <a href={url} className="btn me-2" target="_blank"><b className="fas fa-link">Visit Site</b></a>
-                    <a href={'tmp'} className="btn me-2" target="_blank"><b className="fab fa-like">Add to Favorites</b></a>
-                    <a className="btn me-2" onClick={onEditClicked}><b className="fab fa-edit">Edit</b></a>
+                    {user.id !== 0 && <a href={'tmp'} className="btn me-2" target="_blank"><b className="fab fa-like">Add to Favorites</b></a>}
+                    {user.role === 'admin' && <a className="btn me-2" onClick={onEditClicked}><b className="fab fa-edit">Edit</b></a>}
 
                 </div>
             </div>

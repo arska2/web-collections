@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.2 on win32)" generated="20230530 14:18:00.089" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.11.2 on win32)" generated="20230531 10:42:50.774" rpa="false" schemaversion="3">
 <suite id="s1" name="updateScreenshots" source="C:\Users\AarniSeppänen\Documents\GitHub\web-collections\client\robots\updateScreenshots.robot">
 <kw name="Connect To Database" library="DatabaseLibrary" type="SETUP">
 <arg>pymysql</arg>
@@ -10,8 +10,8 @@
 <arg>${DB_PORT}</arg>
 <doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
 connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
-<msg timestamp="20230530 14:18:00.389" level="INFO">Connecting using : pymysql.connect(db=heroku_beb9e92089676e3, user=bb329fbdf3c076, passwd=f0d9eb62, host=us-cdbr-east-06.cleardb.net, port=3306, charset=None) </msg>
-<status status="PASS" starttime="20230530 14:18:00.364" endtime="20230530 14:18:01.278"/>
+<msg timestamp="20230531 10:42:51.020" level="INFO">Connecting using : pymysql.connect(db=heroku_beb9e92089676e3, user=bb329fbdf3c076, passwd=f0d9eb62, host=us-cdbr-east-06.cleardb.net, port=3306, charset=None) </msg>
+<status status="PASS" starttime="20230531 10:42:50.998" endtime="20230531 10:42:51.733"/>
 </kw>
 <test id="s1-t1" name="Get Websites" line="22">
 <kw name="Query" library="DatabaseLibrary">
@@ -20,9 +20,9 @@ connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
 <doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
 input `sansTran` to True to run command without an explicit transaction commit or rollback.
 Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
-<msg timestamp="20230530 14:18:01.280" level="INFO">Executing : Query  |  SELECT url FROM website; </msg>
-<msg timestamp="20230530 14:18:01.589" level="INFO">${websites} = (('https://www.hs.fi/',), ('https://www.facebook.com/',), ('https://www.linkedin.com/',), ('https://www.twitter.com/',), ('https://www.github.com',), ('https://www.google.com/',), ('https://www.duckdu...</msg>
-<status status="PASS" starttime="20230530 14:18:01.280" endtime="20230530 14:18:01.589"/>
+<msg timestamp="20230531 10:42:51.734" level="INFO">Executing : Query  |  SELECT url FROM website; </msg>
+<msg timestamp="20230531 10:42:52.049" level="INFO">${websites} = (('https://www.hs.fi/',), ('https://www.facebook.com/',), ('https://www.linkedin.com/',), ('https://www.twitter.com/',), ('https://www.github.com',), ('https://www.google.com/',), ('https://www.duckdu...</msg>
+<status status="PASS" starttime="20230531 10:42:51.734" endtime="20230531 10:42:52.049"/>
 </kw>
 <for flavor="IN">
 <var>${website}</var>
@@ -33,15 +33,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:01.592" level="INFO">${url} = https://www.hs.fi/</msg>
-<status status="PASS" starttime="20230530 14:18:01.591" endtime="20230530 14:18:01.592"/>
+<msg timestamp="20230531 10:42:52.050" level="INFO">${url} = https://www.hs.fi/</msg>
+<status status="PASS" starttime="20230531 10:42:52.049" endtime="20230531 10:42:52.050"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:01.593" level="INFO">${filename} = hs</msg>
-<status status="PASS" starttime="20230530 14:18:01.592" endtime="20230530 14:18:01.593"/>
+<msg timestamp="20230531 10:42:52.050" level="INFO">${filename} = hs</msg>
+<status status="PASS" starttime="20230531 10:42:52.050" endtime="20230531 10:42:52.050"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -55,41 +55,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:01.595" level="INFO">${image_name} = screenshots/hs.png</msg>
-<status status="PASS" starttime="20230530 14:18:01.595" endtime="20230530 14:18:01.595"/>
+<msg timestamp="20230531 10:42:52.051" level="INFO">${image_name} = screenshots/hs.png</msg>
+<status status="PASS" starttime="20230531 10:42:52.051" endtime="20230531 10:42:52.051"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:18:01.596" level="INFO">Opening browser 'chrome' to base url 'https://www.hs.fi/'.</msg>
-<status status="PASS" starttime="20230530 14:18:01.596" endtime="20230530 14:18:06.452"/>
+<msg timestamp="20230531 10:42:52.051" level="INFO">Opening browser 'chrome' to base url 'https://www.hs.fi/'.</msg>
+<status status="PASS" starttime="20230531 10:42:52.051" endtime="20230531 10:42:56.061"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:18:06.452" endtime="20230530 14:18:06.686"/>
+<status status="PASS" starttime="20230531 10:42:56.061" endtime="20230531 10:42:56.212"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:18:09.687" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:18:06.686" endtime="20230530 14:18:09.687"/>
+<msg timestamp="20230531 10:42:59.213" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:42:56.212" endtime="20230531 10:42:59.213"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:18:10.325" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/hs.png"&gt;&lt;img src="screenshots/hs.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:18:09.687" endtime="20230530 14:18:10.326"/>
+<msg timestamp="20230531 10:42:59.469" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/hs.png"&gt;&lt;img src="screenshots/hs.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:42:59.213" endtime="20230531 10:42:59.469"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:18:10.326" endtime="20230530 14:18:12.708"/>
+<status status="PASS" starttime="20230531 10:42:59.469" endtime="20230531 10:43:01.599"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:01.595" endtime="20230530 14:18:12.708"/>
+<status status="PASS" starttime="20230531 10:42:52.050" endtime="20230531 10:43:01.599"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:01.595" endtime="20230530 14:18:12.708"/>
+<status status="PASS" starttime="20230531 10:42:52.050" endtime="20230531 10:43:01.599"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:01.590" endtime="20230530 14:18:12.708"/>
+<status status="PASS" starttime="20230531 10:42:52.049" endtime="20230531 10:43:01.599"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.facebook.com/',)</var>
@@ -97,15 +97,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:12.710" level="INFO">${url} = https://www.facebook.com/</msg>
-<status status="PASS" starttime="20230530 14:18:12.709" endtime="20230530 14:18:12.710"/>
+<msg timestamp="20230531 10:43:01.599" level="INFO">${url} = https://www.facebook.com/</msg>
+<status status="PASS" starttime="20230531 10:43:01.599" endtime="20230531 10:43:01.599"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:12.711" level="INFO">${filename} = facebook</msg>
-<status status="PASS" starttime="20230530 14:18:12.710" endtime="20230530 14:18:12.711"/>
+<msg timestamp="20230531 10:43:01.599" level="INFO">${filename} = facebook</msg>
+<status status="PASS" starttime="20230531 10:43:01.599" endtime="20230531 10:43:01.599"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -119,41 +119,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:12.712" level="INFO">${image_name} = screenshots/facebook.png</msg>
-<status status="PASS" starttime="20230530 14:18:12.711" endtime="20230530 14:18:12.712"/>
+<msg timestamp="20230531 10:43:01.604" level="INFO">${image_name} = screenshots/facebook.png</msg>
+<status status="PASS" starttime="20230531 10:43:01.604" endtime="20230531 10:43:01.604"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:18:12.712" level="INFO">Opening browser 'chrome' to base url 'https://www.facebook.com/'.</msg>
-<status status="PASS" starttime="20230530 14:18:12.712" endtime="20230530 14:18:15.403"/>
+<msg timestamp="20230531 10:43:01.604" level="INFO">Opening browser 'chrome' to base url 'https://www.facebook.com/'.</msg>
+<status status="PASS" starttime="20230531 10:43:01.604" endtime="20230531 10:43:03.638"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:18:15.403" endtime="20230530 14:18:15.533"/>
+<status status="PASS" starttime="20230531 10:43:03.638" endtime="20230531 10:43:03.757"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:18:18.535" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:18:15.534" endtime="20230530 14:18:18.535"/>
+<msg timestamp="20230531 10:43:06.757" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:43:03.757" endtime="20230531 10:43:06.757"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:18:18.672" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/facebook.png"&gt;&lt;img src="screenshots/facebook.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:18:18.535" endtime="20230530 14:18:18.672"/>
+<msg timestamp="20230531 10:43:06.838" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/facebook.png"&gt;&lt;img src="screenshots/facebook.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:43:06.757" endtime="20230531 10:43:06.838"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:18:18.672" endtime="20230530 14:18:21.081"/>
+<status status="PASS" starttime="20230531 10:43:06.838" endtime="20230531 10:43:08.935"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:12.711" endtime="20230530 14:18:21.081"/>
+<status status="PASS" starttime="20230531 10:43:01.599" endtime="20230531 10:43:08.936"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:12.711" endtime="20230530 14:18:21.081"/>
+<status status="PASS" starttime="20230531 10:43:01.599" endtime="20230531 10:43:08.936"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:12.708" endtime="20230530 14:18:21.081"/>
+<status status="PASS" starttime="20230531 10:43:01.599" endtime="20230531 10:43:08.936"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.linkedin.com/',)</var>
@@ -161,15 +161,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:21.083" level="INFO">${url} = https://www.linkedin.com/</msg>
-<status status="PASS" starttime="20230530 14:18:21.081" endtime="20230530 14:18:21.083"/>
+<msg timestamp="20230531 10:43:08.936" level="INFO">${url} = https://www.linkedin.com/</msg>
+<status status="PASS" starttime="20230531 10:43:08.936" endtime="20230531 10:43:08.936"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:21.084" level="INFO">${filename} = linkedin</msg>
-<status status="PASS" starttime="20230530 14:18:21.083" endtime="20230530 14:18:21.084"/>
+<msg timestamp="20230531 10:43:08.936" level="INFO">${filename} = linkedin</msg>
+<status status="PASS" starttime="20230531 10:43:08.936" endtime="20230531 10:43:08.936"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -183,41 +183,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:21.085" level="INFO">${image_name} = screenshots/linkedin.png</msg>
-<status status="PASS" starttime="20230530 14:18:21.084" endtime="20230530 14:18:21.085"/>
+<msg timestamp="20230531 10:43:08.938" level="INFO">${image_name} = screenshots/linkedin.png</msg>
+<status status="PASS" starttime="20230531 10:43:08.938" endtime="20230531 10:43:08.938"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:18:21.085" level="INFO">Opening browser 'chrome' to base url 'https://www.linkedin.com/'.</msg>
-<status status="PASS" starttime="20230530 14:18:21.085" endtime="20230530 14:18:24.696"/>
+<msg timestamp="20230531 10:43:08.938" level="INFO">Opening browser 'chrome' to base url 'https://www.linkedin.com/'.</msg>
+<status status="PASS" starttime="20230531 10:43:08.938" endtime="20230531 10:43:10.565"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:18:24.697" endtime="20230530 14:18:24.882"/>
+<status status="PASS" starttime="20230531 10:43:10.565" endtime="20230531 10:43:10.684"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:18:27.883" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:18:24.882" endtime="20230530 14:18:27.883"/>
+<msg timestamp="20230531 10:43:13.685" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:43:10.684" endtime="20230531 10:43:13.685"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:18:28.092" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/linkedin.png"&gt;&lt;img src="screenshots/linkedin.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:18:27.883" endtime="20230530 14:18:28.093"/>
+<msg timestamp="20230531 10:43:13.768" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/linkedin.png"&gt;&lt;img src="screenshots/linkedin.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:43:13.685" endtime="20230531 10:43:13.768"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:18:28.093" endtime="20230530 14:18:30.359"/>
+<status status="PASS" starttime="20230531 10:43:13.768" endtime="20230531 10:43:15.851"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:21.084" endtime="20230530 14:18:30.360"/>
+<status status="PASS" starttime="20230531 10:43:08.936" endtime="20230531 10:43:15.851"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:21.084" endtime="20230530 14:18:30.360"/>
+<status status="PASS" starttime="20230531 10:43:08.936" endtime="20230531 10:43:15.851"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:21.081" endtime="20230530 14:18:30.360"/>
+<status status="PASS" starttime="20230531 10:43:08.936" endtime="20230531 10:43:15.851"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.twitter.com/',)</var>
@@ -225,15 +225,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:30.362" level="INFO">${url} = https://www.twitter.com/</msg>
-<status status="PASS" starttime="20230530 14:18:30.361" endtime="20230530 14:18:30.362"/>
+<msg timestamp="20230531 10:43:15.851" level="INFO">${url} = https://www.twitter.com/</msg>
+<status status="PASS" starttime="20230531 10:43:15.851" endtime="20230531 10:43:15.851"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:30.363" level="INFO">${filename} = twitter</msg>
-<status status="PASS" starttime="20230530 14:18:30.362" endtime="20230530 14:18:30.363"/>
+<msg timestamp="20230531 10:43:15.851" level="INFO">${filename} = twitter</msg>
+<status status="PASS" starttime="20230531 10:43:15.851" endtime="20230531 10:43:15.851"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -247,41 +247,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:30.364" level="INFO">${image_name} = screenshots/twitter.png</msg>
-<status status="PASS" starttime="20230530 14:18:30.364" endtime="20230530 14:18:30.364"/>
+<msg timestamp="20230531 10:43:15.851" level="INFO">${image_name} = screenshots/twitter.png</msg>
+<status status="PASS" starttime="20230531 10:43:15.851" endtime="20230531 10:43:15.851"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:18:30.365" level="INFO">Opening browser 'chrome' to base url 'https://www.twitter.com/'.</msg>
-<status status="PASS" starttime="20230530 14:18:30.364" endtime="20230530 14:18:34.520"/>
+<msg timestamp="20230531 10:43:15.851" level="INFO">Opening browser 'chrome' to base url 'https://www.twitter.com/'.</msg>
+<status status="PASS" starttime="20230531 10:43:15.851" endtime="20230531 10:43:18.644"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:18:34.520" endtime="20230530 14:18:34.672"/>
+<status status="PASS" starttime="20230531 10:43:18.644" endtime="20230531 10:43:18.777"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:18:37.673" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:18:34.672" endtime="20230530 14:18:37.673"/>
+<msg timestamp="20230531 10:43:21.777" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:43:18.777" endtime="20230531 10:43:21.777"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:18:38.042" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/twitter.png"&gt;&lt;img src="screenshots/twitter.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:18:37.673" endtime="20230530 14:18:38.042"/>
+<msg timestamp="20230531 10:43:21.948" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/twitter.png"&gt;&lt;img src="screenshots/twitter.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:43:21.777" endtime="20230531 10:43:21.948"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:18:38.042" endtime="20230530 14:18:40.415"/>
+<status status="PASS" starttime="20230531 10:43:21.948" endtime="20230531 10:43:24.080"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:30.363" endtime="20230530 14:18:40.416"/>
+<status status="PASS" starttime="20230531 10:43:15.851" endtime="20230531 10:43:24.080"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:30.363" endtime="20230530 14:18:40.416"/>
+<status status="PASS" starttime="20230531 10:43:15.851" endtime="20230531 10:43:24.080"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:30.360" endtime="20230530 14:18:40.416"/>
+<status status="PASS" starttime="20230531 10:43:15.851" endtime="20230531 10:43:24.080"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.github.com',)</var>
@@ -289,15 +289,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:40.419" level="INFO">${url} = https://www.github.com</msg>
-<status status="PASS" starttime="20230530 14:18:40.417" endtime="20230530 14:18:40.419"/>
+<msg timestamp="20230531 10:43:24.080" level="INFO">${url} = https://www.github.com</msg>
+<status status="PASS" starttime="20230531 10:43:24.080" endtime="20230531 10:43:24.080"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:40.420" level="INFO">${filename} = github</msg>
-<status status="PASS" starttime="20230530 14:18:40.419" endtime="20230530 14:18:40.420"/>
+<msg timestamp="20230531 10:43:24.080" level="INFO">${filename} = github</msg>
+<status status="PASS" starttime="20230531 10:43:24.080" endtime="20230531 10:43:24.080"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -311,41 +311,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:40.421" level="INFO">${image_name} = screenshots/github.png</msg>
-<status status="PASS" starttime="20230530 14:18:40.421" endtime="20230530 14:18:40.421"/>
+<msg timestamp="20230531 10:43:24.080" level="INFO">${image_name} = screenshots/github.png</msg>
+<status status="PASS" starttime="20230531 10:43:24.080" endtime="20230531 10:43:24.080"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:18:40.422" level="INFO">Opening browser 'chrome' to base url 'https://www.github.com'.</msg>
-<status status="PASS" starttime="20230530 14:18:40.422" endtime="20230530 14:18:43.728"/>
+<msg timestamp="20230531 10:43:24.080" level="INFO">Opening browser 'chrome' to base url 'https://www.github.com'.</msg>
+<status status="PASS" starttime="20230531 10:43:24.080" endtime="20230531 10:43:26.184"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:18:43.728" endtime="20230530 14:18:44.553"/>
+<status status="PASS" starttime="20230531 10:43:26.184" endtime="20230531 10:43:26.565"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:18:47.554" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:18:44.553" endtime="20230530 14:18:47.554"/>
+<msg timestamp="20230531 10:43:29.565" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:43:26.565" endtime="20230531 10:43:29.565"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:18:48.438" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/github.png"&gt;&lt;img src="screenshots/github.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:18:47.554" endtime="20230530 14:18:48.438"/>
+<msg timestamp="20230531 10:43:30.042" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/github.png"&gt;&lt;img src="screenshots/github.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:43:29.565" endtime="20230531 10:43:30.042"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:18:48.438" endtime="20230530 14:18:50.781"/>
+<status status="PASS" starttime="20230531 10:43:30.042" endtime="20230531 10:43:32.129"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:40.421" endtime="20230530 14:18:50.781"/>
+<status status="PASS" starttime="20230531 10:43:24.080" endtime="20230531 10:43:32.129"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:40.420" endtime="20230530 14:18:50.781"/>
+<status status="PASS" starttime="20230531 10:43:24.080" endtime="20230531 10:43:32.129"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:40.417" endtime="20230530 14:18:50.781"/>
+<status status="PASS" starttime="20230531 10:43:24.080" endtime="20230531 10:43:32.129"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.google.com/',)</var>
@@ -353,15 +353,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:50.784" level="INFO">${url} = https://www.google.com/</msg>
-<status status="PASS" starttime="20230530 14:18:50.781" endtime="20230530 14:18:50.784"/>
+<msg timestamp="20230531 10:43:32.129" level="INFO">${url} = https://www.google.com/</msg>
+<status status="PASS" starttime="20230531 10:43:32.129" endtime="20230531 10:43:32.129"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:50.785" level="INFO">${filename} = google</msg>
-<status status="PASS" starttime="20230530 14:18:50.784" endtime="20230530 14:18:50.785"/>
+<msg timestamp="20230531 10:43:32.129" level="INFO">${filename} = google</msg>
+<status status="PASS" starttime="20230531 10:43:32.129" endtime="20230531 10:43:32.129"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -375,41 +375,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:50.786" level="INFO">${image_name} = screenshots/google.png</msg>
-<status status="PASS" starttime="20230530 14:18:50.786" endtime="20230530 14:18:50.786"/>
+<msg timestamp="20230531 10:43:32.129" level="INFO">${image_name} = screenshots/google.png</msg>
+<status status="PASS" starttime="20230531 10:43:32.129" endtime="20230531 10:43:32.129"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:18:50.787" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com/'.</msg>
-<status status="PASS" starttime="20230530 14:18:50.787" endtime="20230530 14:18:53.089"/>
+<msg timestamp="20230531 10:43:32.129" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com/'.</msg>
+<status status="PASS" starttime="20230531 10:43:32.129" endtime="20230531 10:43:33.894"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:18:53.089" endtime="20230530 14:18:53.215"/>
+<status status="PASS" starttime="20230531 10:43:33.894" endtime="20230531 10:43:34.008"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:18:56.215" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:18:53.215" endtime="20230530 14:18:56.215"/>
+<msg timestamp="20230531 10:43:37.009" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:43:34.008" endtime="20230531 10:43:37.009"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:18:56.390" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/google.png"&gt;&lt;img src="screenshots/google.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:18:56.215" endtime="20230530 14:18:56.390"/>
+<msg timestamp="20230531 10:43:37.113" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/google.png"&gt;&lt;img src="screenshots/google.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:43:37.009" endtime="20230531 10:43:37.113"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:18:56.391" endtime="20230530 14:18:58.704"/>
+<status status="PASS" starttime="20230531 10:43:37.113" endtime="20230531 10:43:39.211"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:50.785" endtime="20230530 14:18:58.704"/>
+<status status="PASS" starttime="20230531 10:43:32.129" endtime="20230531 10:43:39.211"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:50.785" endtime="20230530 14:18:58.704"/>
+<status status="PASS" starttime="20230531 10:43:32.129" endtime="20230531 10:43:39.211"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:50.781" endtime="20230530 14:18:58.704"/>
+<status status="PASS" starttime="20230531 10:43:32.129" endtime="20230531 10:43:39.211"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.duckduckgo.com/',)</var>
@@ -417,15 +417,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:58.706" level="INFO">${url} = https://www.duckduckgo.com/</msg>
-<status status="PASS" starttime="20230530 14:18:58.704" endtime="20230530 14:18:58.706"/>
+<msg timestamp="20230531 10:43:39.211" level="INFO">${url} = https://www.duckduckgo.com/</msg>
+<status status="PASS" starttime="20230531 10:43:39.211" endtime="20230531 10:43:39.211"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:58.706" level="INFO">${filename} = duckduckgo</msg>
-<status status="PASS" starttime="20230530 14:18:58.706" endtime="20230530 14:18:58.706"/>
+<msg timestamp="20230531 10:43:39.211" level="INFO">${filename} = duckduckgo</msg>
+<status status="PASS" starttime="20230531 10:43:39.211" endtime="20230531 10:43:39.211"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -439,41 +439,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:18:58.707" level="INFO">${image_name} = screenshots/duckduckgo.png</msg>
-<status status="PASS" starttime="20230530 14:18:58.707" endtime="20230530 14:18:58.707"/>
+<msg timestamp="20230531 10:43:39.211" level="INFO">${image_name} = screenshots/duckduckgo.png</msg>
+<status status="PASS" starttime="20230531 10:43:39.211" endtime="20230531 10:43:39.211"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:18:58.708" level="INFO">Opening browser 'chrome' to base url 'https://www.duckduckgo.com/'.</msg>
-<status status="PASS" starttime="20230530 14:18:58.708" endtime="20230530 14:19:01.319"/>
+<msg timestamp="20230531 10:43:39.211" level="INFO">Opening browser 'chrome' to base url 'https://www.duckduckgo.com/'.</msg>
+<status status="PASS" starttime="20230531 10:43:39.211" endtime="20230531 10:43:41.315"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:19:01.319" endtime="20230530 14:19:01.470"/>
+<status status="PASS" starttime="20230531 10:43:41.315" endtime="20230531 10:43:41.434"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:19:04.472" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:19:01.470" endtime="20230530 14:19:04.472"/>
+<msg timestamp="20230531 10:43:44.434" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:43:41.434" endtime="20230531 10:43:44.434"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:19:04.636" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/duckduckgo.png"&gt;&lt;img src="screenshots/duckduckgo.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:19:04.472" endtime="20230530 14:19:04.636"/>
+<msg timestamp="20230531 10:43:44.548" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/duckduckgo.png"&gt;&lt;img src="screenshots/duckduckgo.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:43:44.434" endtime="20230531 10:43:44.548"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:19:04.637" endtime="20230530 14:19:06.869"/>
+<status status="PASS" starttime="20230531 10:43:44.548" endtime="20230531 10:43:46.635"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:58.707" endtime="20230530 14:19:06.869"/>
+<status status="PASS" starttime="20230531 10:43:39.211" endtime="20230531 10:43:46.635"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:58.706" endtime="20230530 14:19:06.869"/>
+<status status="PASS" starttime="20230531 10:43:39.211" endtime="20230531 10:43:46.635"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:58.704" endtime="20230530 14:19:06.870"/>
+<status status="PASS" starttime="20230531 10:43:39.211" endtime="20230531 10:43:46.635"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.youtube.com/',)</var>
@@ -481,15 +481,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:06.871" level="INFO">${url} = https://www.youtube.com/</msg>
-<status status="PASS" starttime="20230530 14:19:06.870" endtime="20230530 14:19:06.872"/>
+<msg timestamp="20230531 10:43:46.638" level="INFO">${url} = https://www.youtube.com/</msg>
+<status status="PASS" starttime="20230531 10:43:46.635" endtime="20230531 10:43:46.638"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:06.872" level="INFO">${filename} = youtube</msg>
-<status status="PASS" starttime="20230530 14:19:06.872" endtime="20230530 14:19:06.872"/>
+<msg timestamp="20230531 10:43:46.638" level="INFO">${filename} = youtube</msg>
+<status status="PASS" starttime="20230531 10:43:46.638" endtime="20230531 10:43:46.638"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -503,41 +503,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:06.873" level="INFO">${image_name} = screenshots/youtube.png</msg>
-<status status="PASS" starttime="20230530 14:19:06.873" endtime="20230530 14:19:06.873"/>
+<msg timestamp="20230531 10:43:46.638" level="INFO">${image_name} = screenshots/youtube.png</msg>
+<status status="PASS" starttime="20230531 10:43:46.638" endtime="20230531 10:43:46.638"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:19:06.874" level="INFO">Opening browser 'chrome' to base url 'https://www.youtube.com/'.</msg>
-<status status="PASS" starttime="20230530 14:19:06.874" endtime="20230530 14:19:11.733"/>
+<msg timestamp="20230531 10:43:46.638" level="INFO">Opening browser 'chrome' to base url 'https://www.youtube.com/'.</msg>
+<status status="PASS" starttime="20230531 10:43:46.638" endtime="20230531 10:43:49.453"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:19:11.734" endtime="20230530 14:19:12.762"/>
+<status status="PASS" starttime="20230531 10:43:49.454" endtime="20230531 10:43:49.680"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:19:15.763" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:19:12.762" endtime="20230530 14:19:15.763"/>
+<msg timestamp="20230531 10:43:52.680" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:43:49.680" endtime="20230531 10:43:52.680"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:19:17.120" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/youtube.png"&gt;&lt;img src="screenshots/youtube.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:19:15.763" endtime="20230530 14:19:17.120"/>
+<msg timestamp="20230531 10:43:52.885" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/youtube.png"&gt;&lt;img src="screenshots/youtube.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:43:52.680" endtime="20230531 10:43:52.885"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:19:17.120" endtime="20230530 14:19:19.538"/>
+<status status="PASS" starttime="20230531 10:43:52.885" endtime="20230531 10:43:55.004"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:06.873" endtime="20230530 14:19:19.538"/>
+<status status="PASS" starttime="20230531 10:43:46.638" endtime="20230531 10:43:55.004"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:06.873" endtime="20230530 14:19:19.538"/>
+<status status="PASS" starttime="20230531 10:43:46.638" endtime="20230531 10:43:55.004"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:06.870" endtime="20230530 14:19:19.538"/>
+<status status="PASS" starttime="20230531 10:43:46.635" endtime="20230531 10:43:55.004"/>
 </iter>
 <iter>
 <var name="${website}">('https://chat.openai.com',)</var>
@@ -545,15 +545,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:19.540" level="INFO">${url} = https://chat.openai.com</msg>
-<status status="PASS" starttime="20230530 14:19:19.539" endtime="20230530 14:19:19.540"/>
+<msg timestamp="20230531 10:43:55.004" level="INFO">${url} = https://chat.openai.com</msg>
+<status status="PASS" starttime="20230531 10:43:55.004" endtime="20230531 10:43:55.004"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:19.540" level="INFO">${filename} = chat</msg>
-<status status="PASS" starttime="20230530 14:19:19.540" endtime="20230530 14:19:19.540"/>
+<msg timestamp="20230531 10:43:55.004" level="INFO">${filename} = chat</msg>
+<status status="PASS" starttime="20230531 10:43:55.004" endtime="20230531 10:43:55.004"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -567,41 +567,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:19.541" level="INFO">${image_name} = screenshots/chat.png</msg>
-<status status="PASS" starttime="20230530 14:19:19.541" endtime="20230530 14:19:19.541"/>
+<msg timestamp="20230531 10:43:55.004" level="INFO">${image_name} = screenshots/chat.png</msg>
+<status status="PASS" starttime="20230531 10:43:55.004" endtime="20230531 10:43:55.004"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:19:19.542" level="INFO">Opening browser 'chrome' to base url 'https://chat.openai.com'.</msg>
-<status status="PASS" starttime="20230530 14:19:19.541" endtime="20230530 14:19:22.381"/>
+<msg timestamp="20230531 10:43:55.004" level="INFO">Opening browser 'chrome' to base url 'https://chat.openai.com'.</msg>
+<status status="PASS" starttime="20230531 10:43:55.004" endtime="20230531 10:43:57.067"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:19:22.381" endtime="20230530 14:19:22.531"/>
+<status status="PASS" starttime="20230531 10:43:57.067" endtime="20230531 10:43:57.190"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:19:25.533" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:19:22.531" endtime="20230530 14:19:25.533"/>
+<msg timestamp="20230531 10:44:00.192" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:43:57.190" endtime="20230531 10:44:00.192"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:19:25.680" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/chat.png"&gt;&lt;img src="screenshots/chat.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:19:25.533" endtime="20230530 14:19:25.680"/>
+<msg timestamp="20230531 10:44:00.277" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/chat.png"&gt;&lt;img src="screenshots/chat.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:44:00.192" endtime="20230531 10:44:00.277"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:19:25.680" endtime="20230530 14:19:27.986"/>
+<status status="PASS" starttime="20230531 10:44:00.277" endtime="20230531 10:44:02.366"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:19.541" endtime="20230530 14:19:27.986"/>
+<status status="PASS" starttime="20230531 10:43:55.004" endtime="20230531 10:44:02.366"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:19.541" endtime="20230530 14:19:27.986"/>
+<status status="PASS" starttime="20230531 10:43:55.004" endtime="20230531 10:44:02.366"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:19.538" endtime="20230530 14:19:27.986"/>
+<status status="PASS" starttime="20230531 10:43:55.004" endtime="20230531 10:44:02.366"/>
 </iter>
 <iter>
 <var name="${website}">('https://cloud.google.com/',)</var>
@@ -609,15 +609,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:27.988" level="INFO">${url} = https://cloud.google.com/</msg>
-<status status="PASS" starttime="20230530 14:19:27.987" endtime="20230530 14:19:27.988"/>
+<msg timestamp="20230531 10:44:02.367" level="INFO">${url} = https://cloud.google.com/</msg>
+<status status="PASS" starttime="20230531 10:44:02.367" endtime="20230531 10:44:02.368"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:27.989" level="INFO">${filename} = cloud</msg>
-<status status="PASS" starttime="20230530 14:19:27.988" endtime="20230530 14:19:27.989"/>
+<msg timestamp="20230531 10:44:02.369" level="INFO">${filename} = cloud</msg>
+<status status="PASS" starttime="20230531 10:44:02.368" endtime="20230531 10:44:02.369"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -631,41 +631,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:27.989" level="INFO">${image_name} = screenshots/cloud.png</msg>
-<status status="PASS" starttime="20230530 14:19:27.989" endtime="20230530 14:19:27.989"/>
+<msg timestamp="20230531 10:44:02.369" level="INFO">${image_name} = screenshots/cloud.png</msg>
+<status status="PASS" starttime="20230531 10:44:02.369" endtime="20230531 10:44:02.369"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:19:27.990" level="INFO">Opening browser 'chrome' to base url 'https://cloud.google.com/'.</msg>
-<status status="PASS" starttime="20230530 14:19:27.990" endtime="20230530 14:19:33.868"/>
+<msg timestamp="20230531 10:44:02.370" level="INFO">Opening browser 'chrome' to base url 'https://cloud.google.com/'.</msg>
+<status status="PASS" starttime="20230531 10:44:02.369" endtime="20230531 10:44:07.268"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:19:33.868" endtime="20230530 14:19:34.069"/>
+<status status="PASS" starttime="20230531 10:44:07.268" endtime="20230531 10:44:07.382"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:19:37.070" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:19:34.069" endtime="20230530 14:19:37.070"/>
+<msg timestamp="20230531 10:44:10.384" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:44:07.382" endtime="20230531 10:44:10.384"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:19:37.516" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/cloud.png"&gt;&lt;img src="screenshots/cloud.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:19:37.070" endtime="20230530 14:19:37.516"/>
+<msg timestamp="20230531 10:44:10.578" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/cloud.png"&gt;&lt;img src="screenshots/cloud.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:44:10.384" endtime="20230531 10:44:10.578"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:19:37.516" endtime="20230530 14:19:39.904"/>
+<status status="PASS" starttime="20230531 10:44:10.578" endtime="20230531 10:44:12.691"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:27.989" endtime="20230530 14:19:39.905"/>
+<status status="PASS" starttime="20230531 10:44:02.369" endtime="20230531 10:44:12.691"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:27.989" endtime="20230530 14:19:39.905"/>
+<status status="PASS" starttime="20230531 10:44:02.369" endtime="20230531 10:44:12.691"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:27.987" endtime="20230530 14:19:39.905"/>
+<status status="PASS" starttime="20230531 10:44:02.367" endtime="20230531 10:44:12.691"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.heroku.com/',)</var>
@@ -673,15 +673,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:39.907" level="INFO">${url} = https://www.heroku.com/</msg>
-<status status="PASS" starttime="20230530 14:19:39.905" endtime="20230530 14:19:39.907"/>
+<msg timestamp="20230531 10:44:12.691" level="INFO">${url} = https://www.heroku.com/</msg>
+<status status="PASS" starttime="20230531 10:44:12.691" endtime="20230531 10:44:12.691"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:39.908" level="INFO">${filename} = heroku</msg>
-<status status="PASS" starttime="20230530 14:19:39.907" endtime="20230530 14:19:39.908"/>
+<msg timestamp="20230531 10:44:12.692" level="INFO">${filename} = heroku</msg>
+<status status="PASS" starttime="20230531 10:44:12.691" endtime="20230531 10:44:12.692"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -695,41 +695,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:39.910" level="INFO">${image_name} = screenshots/heroku.png</msg>
-<status status="PASS" starttime="20230530 14:19:39.909" endtime="20230530 14:19:39.910"/>
+<msg timestamp="20230531 10:44:12.692" level="INFO">${image_name} = screenshots/heroku.png</msg>
+<status status="PASS" starttime="20230531 10:44:12.692" endtime="20230531 10:44:12.692"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:19:39.911" level="INFO">Opening browser 'chrome' to base url 'https://www.heroku.com/'.</msg>
-<status status="PASS" starttime="20230530 14:19:39.910" endtime="20230530 14:19:43.783"/>
+<msg timestamp="20230531 10:44:12.692" level="INFO">Opening browser 'chrome' to base url 'https://www.heroku.com/'.</msg>
+<status status="PASS" starttime="20230531 10:44:12.692" endtime="20230531 10:44:15.100"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:19:43.783" endtime="20230530 14:19:44.076"/>
+<status status="PASS" starttime="20230531 10:44:15.101" endtime="20230531 10:44:15.214"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:19:47.077" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:19:44.077" endtime="20230530 14:19:47.077"/>
+<msg timestamp="20230531 10:44:18.215" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:44:15.215" endtime="20230531 10:44:18.215"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:19:47.269" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/heroku.png"&gt;&lt;img src="screenshots/heroku.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:19:47.077" endtime="20230530 14:19:47.270"/>
+<msg timestamp="20230531 10:44:18.330" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/heroku.png"&gt;&lt;img src="screenshots/heroku.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:44:18.215" endtime="20230531 10:44:18.330"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:19:47.270" endtime="20230530 14:19:49.571"/>
+<status status="PASS" starttime="20230531 10:44:18.330" endtime="20230531 10:44:20.443"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:39.909" endtime="20230530 14:19:49.571"/>
+<status status="PASS" starttime="20230531 10:44:12.692" endtime="20230531 10:44:20.443"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:39.908" endtime="20230530 14:19:49.571"/>
+<status status="PASS" starttime="20230531 10:44:12.692" endtime="20230531 10:44:20.443"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:39.905" endtime="20230530 14:19:49.571"/>
+<status status="PASS" starttime="20230531 10:44:12.691" endtime="20230531 10:44:20.443"/>
 </iter>
 <iter>
 <var name="${website}">('https://aws.amazon.com',)</var>
@@ -737,15 +737,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:49.573" level="INFO">${url} = https://aws.amazon.com</msg>
-<status status="PASS" starttime="20230530 14:19:49.571" endtime="20230530 14:19:49.573"/>
+<msg timestamp="20230531 10:44:20.444" level="INFO">${url} = https://aws.amazon.com</msg>
+<status status="PASS" starttime="20230531 10:44:20.443" endtime="20230531 10:44:20.444"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:49.574" level="INFO">${filename} = aws</msg>
-<status status="PASS" starttime="20230530 14:19:49.573" endtime="20230530 14:19:49.574"/>
+<msg timestamp="20230531 10:44:20.445" level="INFO">${filename} = aws</msg>
+<status status="PASS" starttime="20230531 10:44:20.444" endtime="20230531 10:44:20.445"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -759,41 +759,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:19:49.575" level="INFO">${image_name} = screenshots/aws.png</msg>
-<status status="PASS" starttime="20230530 14:19:49.575" endtime="20230530 14:19:49.575"/>
+<msg timestamp="20230531 10:44:20.445" level="INFO">${image_name} = screenshots/aws.png</msg>
+<status status="PASS" starttime="20230531 10:44:20.445" endtime="20230531 10:44:20.445"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:19:49.577" level="INFO">Opening browser 'chrome' to base url 'https://aws.amazon.com'.</msg>
-<status status="PASS" starttime="20230530 14:19:49.575" endtime="20230530 14:19:56.066"/>
+<msg timestamp="20230531 10:44:20.446" level="INFO">Opening browser 'chrome' to base url 'https://aws.amazon.com'.</msg>
+<status status="PASS" starttime="20230531 10:44:20.445" endtime="20230531 10:44:25.971"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:19:56.066" endtime="20230530 14:19:56.199"/>
+<status status="PASS" starttime="20230531 10:44:25.971" endtime="20230531 10:44:26.088"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:19:59.200" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:19:56.199" endtime="20230530 14:19:59.200"/>
+<msg timestamp="20230531 10:44:29.089" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:44:26.088" endtime="20230531 10:44:29.089"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:19:59.643" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/aws.png"&gt;&lt;img src="screenshots/aws.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:19:59.200" endtime="20230530 14:19:59.644"/>
+<msg timestamp="20230531 10:44:29.295" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/aws.png"&gt;&lt;img src="screenshots/aws.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:44:29.089" endtime="20230531 10:44:29.295"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:19:59.644" endtime="20230530 14:20:01.962"/>
+<status status="PASS" starttime="20230531 10:44:29.295" endtime="20230531 10:44:31.394"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:49.574" endtime="20230530 14:20:01.963"/>
+<status status="PASS" starttime="20230531 10:44:20.445" endtime="20230531 10:44:31.394"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:49.574" endtime="20230530 14:20:01.963"/>
+<status status="PASS" starttime="20230531 10:44:20.445" endtime="20230531 10:44:31.394"/>
 </kw>
-<status status="PASS" starttime="20230530 14:19:49.571" endtime="20230530 14:20:01.963"/>
+<status status="PASS" starttime="20230531 10:44:20.443" endtime="20230531 10:44:31.394"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.netlify.com',)</var>
@@ -801,15 +801,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:01.964" level="INFO">${url} = https://www.netlify.com</msg>
-<status status="PASS" starttime="20230530 14:20:01.963" endtime="20230530 14:20:01.964"/>
+<msg timestamp="20230531 10:44:31.394" level="INFO">${url} = https://www.netlify.com</msg>
+<status status="PASS" starttime="20230531 10:44:31.394" endtime="20230531 10:44:31.394"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:01.964" level="INFO">${filename} = netlify</msg>
-<status status="PASS" starttime="20230530 14:20:01.964" endtime="20230530 14:20:01.964"/>
+<msg timestamp="20230531 10:44:31.396" level="INFO">${filename} = netlify</msg>
+<status status="PASS" starttime="20230531 10:44:31.394" endtime="20230531 10:44:31.396"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -823,41 +823,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:01.966" level="INFO">${image_name} = screenshots/netlify.png</msg>
-<status status="PASS" starttime="20230530 14:20:01.966" endtime="20230530 14:20:01.967"/>
+<msg timestamp="20230531 10:44:31.396" level="INFO">${image_name} = screenshots/netlify.png</msg>
+<status status="PASS" starttime="20230531 10:44:31.396" endtime="20230531 10:44:31.396"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:20:01.968" level="INFO">Opening browser 'chrome' to base url 'https://www.netlify.com'.</msg>
-<status status="PASS" starttime="20230530 14:20:01.967" endtime="20230530 14:20:06.625"/>
+<msg timestamp="20230531 10:44:31.397" level="INFO">Opening browser 'chrome' to base url 'https://www.netlify.com'.</msg>
+<status status="PASS" starttime="20230531 10:44:31.397" endtime="20230531 10:44:34.831"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:20:06.625" endtime="20230530 14:20:06.832"/>
+<status status="PASS" starttime="20230531 10:44:34.831" endtime="20230531 10:44:34.950"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:20:09.833" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:20:06.832" endtime="20230530 14:20:09.834"/>
+<msg timestamp="20230531 10:44:37.950" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:44:34.950" endtime="20230531 10:44:37.950"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:20:10.060" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/netlify.png"&gt;&lt;img src="screenshots/netlify.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:20:09.834" endtime="20230530 14:20:10.060"/>
+<msg timestamp="20230531 10:44:38.098" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/netlify.png"&gt;&lt;img src="screenshots/netlify.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:44:37.950" endtime="20230531 10:44:38.098"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:20:10.060" endtime="20230530 14:20:12.370"/>
+<status status="PASS" starttime="20230531 10:44:38.098" endtime="20230531 10:44:40.209"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:01.966" endtime="20230530 14:20:12.371"/>
+<status status="PASS" starttime="20230531 10:44:31.396" endtime="20230531 10:44:40.209"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:01.966" endtime="20230530 14:20:12.371"/>
+<status status="PASS" starttime="20230531 10:44:31.396" endtime="20230531 10:44:40.210"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:01.963" endtime="20230530 14:20:12.371"/>
+<status status="PASS" starttime="20230531 10:44:31.394" endtime="20230531 10:44:40.210"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.mongodb.com/',)</var>
@@ -865,15 +865,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:12.372" level="INFO">${url} = https://www.mongodb.com/</msg>
-<status status="PASS" starttime="20230530 14:20:12.371" endtime="20230530 14:20:12.372"/>
+<msg timestamp="20230531 10:44:40.211" level="INFO">${url} = https://www.mongodb.com/</msg>
+<status status="PASS" starttime="20230531 10:44:40.210" endtime="20230531 10:44:40.211"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:12.373" level="INFO">${filename} = mongodb</msg>
-<status status="PASS" starttime="20230530 14:20:12.373" endtime="20230530 14:20:12.373"/>
+<msg timestamp="20230531 10:44:40.212" level="INFO">${filename} = mongodb</msg>
+<status status="PASS" starttime="20230531 10:44:40.211" endtime="20230531 10:44:40.212"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -887,41 +887,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:12.374" level="INFO">${image_name} = screenshots/mongodb.png</msg>
-<status status="PASS" starttime="20230530 14:20:12.374" endtime="20230530 14:20:12.374"/>
+<msg timestamp="20230531 10:44:40.212" level="INFO">${image_name} = screenshots/mongodb.png</msg>
+<status status="PASS" starttime="20230531 10:44:40.212" endtime="20230531 10:44:40.212"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:20:12.375" level="INFO">Opening browser 'chrome' to base url 'https://www.mongodb.com/'.</msg>
-<status status="PASS" starttime="20230530 14:20:12.375" endtime="20230530 14:20:19.664"/>
+<msg timestamp="20230531 10:44:40.213" level="INFO">Opening browser 'chrome' to base url 'https://www.mongodb.com/'.</msg>
+<status status="PASS" starttime="20230531 10:44:40.212" endtime="20230531 10:44:42.966"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:20:19.664" endtime="20230530 14:20:20.497"/>
+<status status="PASS" starttime="20230531 10:44:42.966" endtime="20230531 10:44:43.178"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:20:23.498" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:20:20.498" endtime="20230530 14:20:23.498"/>
+<msg timestamp="20230531 10:44:46.179" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:44:43.178" endtime="20230531 10:44:46.179"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:20:23.743" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/mongodb.png"&gt;&lt;img src="screenshots/mongodb.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:20:23.498" endtime="20230530 14:20:23.743"/>
+<msg timestamp="20230531 10:44:46.299" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/mongodb.png"&gt;&lt;img src="screenshots/mongodb.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:44:46.179" endtime="20230531 10:44:46.299"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:20:23.743" endtime="20230530 14:20:26.148"/>
+<status status="PASS" starttime="20230531 10:44:46.299" endtime="20230531 10:44:48.408"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:12.374" endtime="20230530 14:20:26.148"/>
+<status status="PASS" starttime="20230531 10:44:40.212" endtime="20230531 10:44:48.409"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:12.374" endtime="20230530 14:20:26.149"/>
+<status status="PASS" starttime="20230531 10:44:40.212" endtime="20230531 10:44:48.409"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:12.371" endtime="20230530 14:20:26.149"/>
+<status status="PASS" starttime="20230531 10:44:40.210" endtime="20230531 10:44:48.409"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.iltasanomat.fi/',)</var>
@@ -929,15 +929,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:26.151" level="INFO">${url} = https://www.iltasanomat.fi/</msg>
-<status status="PASS" starttime="20230530 14:20:26.149" endtime="20230530 14:20:26.151"/>
+<msg timestamp="20230531 10:44:48.410" level="INFO">${url} = https://www.iltasanomat.fi/</msg>
+<status status="PASS" starttime="20230531 10:44:48.410" endtime="20230531 10:44:48.410"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:26.152" level="INFO">${filename} = iltasanomat</msg>
-<status status="PASS" starttime="20230530 14:20:26.151" endtime="20230530 14:20:26.152"/>
+<msg timestamp="20230531 10:44:48.411" level="INFO">${filename} = iltasanomat</msg>
+<status status="PASS" starttime="20230531 10:44:48.411" endtime="20230531 10:44:48.411"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -951,41 +951,41 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:26.153" level="INFO">${image_name} = screenshots/iltasanomat.png</msg>
-<status status="PASS" starttime="20230530 14:20:26.153" endtime="20230530 14:20:26.153"/>
+<msg timestamp="20230531 10:44:48.412" level="INFO">${image_name} = screenshots/iltasanomat.png</msg>
+<status status="PASS" starttime="20230531 10:44:48.411" endtime="20230531 10:44:48.412"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:20:26.154" level="INFO">Opening browser 'chrome' to base url 'https://www.iltasanomat.fi/'.</msg>
-<status status="PASS" starttime="20230530 14:20:26.154" endtime="20230530 14:20:30.312"/>
+<msg timestamp="20230531 10:44:48.412" level="INFO">Opening browser 'chrome' to base url 'https://www.iltasanomat.fi/'.</msg>
+<status status="PASS" starttime="20230531 10:44:48.412" endtime="20230531 10:44:51.050"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:20:30.312" endtime="20230530 14:20:30.560"/>
+<status status="PASS" starttime="20230531 10:44:51.050" endtime="20230531 10:44:51.173"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:20:33.562" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:20:30.561" endtime="20230530 14:20:33.562"/>
+<msg timestamp="20230531 10:44:54.173" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:44:51.173" endtime="20230531 10:44:54.173"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:20:34.097" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/iltasanomat.png"&gt;&lt;img src="screenshots/iltasanomat.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:20:33.562" endtime="20230530 14:20:34.098"/>
+<msg timestamp="20230531 10:44:54.438" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/iltasanomat.png"&gt;&lt;img src="screenshots/iltasanomat.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:44:54.173" endtime="20230531 10:44:54.438"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:20:34.098" endtime="20230530 14:20:36.350"/>
+<status status="PASS" starttime="20230531 10:44:54.438" endtime="20230531 10:44:56.547"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:26.153" endtime="20230530 14:20:36.350"/>
+<status status="PASS" starttime="20230531 10:44:48.411" endtime="20230531 10:44:56.548"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:26.152" endtime="20230530 14:20:36.352"/>
+<status status="PASS" starttime="20230531 10:44:48.411" endtime="20230531 10:44:56.548"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:26.149" endtime="20230530 14:20:36.352"/>
+<status status="PASS" starttime="20230531 10:44:48.410" endtime="20230531 10:44:56.548"/>
 </iter>
 <iter>
 <var name="${website}">('https://www.iltalehti.fi/',)</var>
@@ -993,15 +993,15 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${url}</var>
 <arg>${website[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:36.353" level="INFO">${url} = https://www.iltalehti.fi/</msg>
-<status status="PASS" starttime="20230530 14:20:36.352" endtime="20230530 14:20:36.353"/>
+<msg timestamp="20230531 10:44:56.549" level="INFO">${url} = https://www.iltalehti.fi/</msg>
+<status status="PASS" starttime="20230531 10:44:56.548" endtime="20230531 10:44:56.549"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${filename}</var>
 <arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:36.354" level="INFO">${filename} = iltalehti</msg>
-<status status="PASS" starttime="20230530 14:20:36.353" endtime="20230530 14:20:36.354"/>
+<msg timestamp="20230531 10:44:56.550" level="INFO">${filename} = iltalehti</msg>
+<status status="PASS" starttime="20230531 10:44:56.549" endtime="20230531 10:44:56.550"/>
 </kw>
 <kw name="Run Keyword And Ignore Error" library="BuiltIn">
 <arg>Take Screenshot</arg>
@@ -1015,52 +1015,1204 @@ Set optional input `returnAsDict` to True to return values as a list of dictiona
 <var>${image_name}</var>
 <arg>screenshots/${filename}.png</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230530 14:20:36.355" level="INFO">${image_name} = screenshots/iltalehti.png</msg>
-<status status="PASS" starttime="20230530 14:20:36.355" endtime="20230530 14:20:36.355"/>
+<msg timestamp="20230531 10:44:56.551" level="INFO">${image_name} = screenshots/iltalehti.png</msg>
+<status status="PASS" starttime="20230531 10:44:56.550" endtime="20230531 10:44:56.551"/>
 </kw>
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230530 14:20:36.356" level="INFO">Opening browser 'chrome' to base url 'https://www.iltalehti.fi/'.</msg>
-<status status="PASS" starttime="20230530 14:20:36.355" endtime="20230530 14:20:39.180"/>
+<msg timestamp="20230531 10:44:56.551" level="INFO">Opening browser 'chrome' to base url 'https://www.iltalehti.fi/'.</msg>
+<status status="PASS" starttime="20230531 10:44:56.551" endtime="20230531 10:44:58.517"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230530 14:20:39.181" endtime="20230530 14:20:39.315"/>
+<status status="PASS" starttime="20230531 10:44:58.517" endtime="20230531 10:44:58.643"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>${DELAY}</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230530 14:20:42.316" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230530 14:20:39.315" endtime="20230530 14:20:42.317"/>
+<msg timestamp="20230531 10:45:01.645" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:44:58.643" endtime="20230531 10:45:01.645"/>
 </kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <arg>${image_name}</arg>
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20230530 14:20:42.721" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/iltalehti.png"&gt;&lt;img src="screenshots/iltalehti.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20230530 14:20:42.317" endtime="20230530 14:20:42.721"/>
+<msg timestamp="20230531 10:45:01.865" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/iltalehti.png"&gt;&lt;img src="screenshots/iltalehti.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:45:01.645" endtime="20230531 10:45:01.865"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230530 14:20:42.722" endtime="20230530 14:20:45.006"/>
+<status status="PASS" starttime="20230531 10:45:01.865" endtime="20230531 10:45:03.969"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:36.354" endtime="20230530 14:20:45.006"/>
+<status status="PASS" starttime="20230531 10:44:56.550" endtime="20230531 10:45:03.969"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:36.354" endtime="20230530 14:20:45.006"/>
+<status status="PASS" starttime="20230531 10:44:56.550" endtime="20230531 10:45:03.969"/>
 </kw>
-<status status="PASS" starttime="20230530 14:20:36.352" endtime="20230530 14:20:45.006"/>
+<status status="PASS" starttime="20230531 10:44:56.548" endtime="20230531 10:45:03.969"/>
 </iter>
-<status status="PASS" starttime="20230530 14:18:01.590" endtime="20230530 14:20:45.006"/>
+<iter>
+<var name="${website}">('https://techcrunch.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:03.971" level="INFO">${url} = https://techcrunch.com/</msg>
+<status status="PASS" starttime="20230531 10:45:03.970" endtime="20230531 10:45:03.971"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:03.971" level="INFO">${filename} = techcrunch</msg>
+<status status="PASS" starttime="20230531 10:45:03.971" endtime="20230531 10:45:03.971"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:03.971" level="INFO">${image_name} = screenshots/techcrunch.png</msg>
+<status status="PASS" starttime="20230531 10:45:03.971" endtime="20230531 10:45:03.971"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:45:03.971" level="INFO">Opening browser 'chrome' to base url 'https://techcrunch.com/'.</msg>
+<status status="PASS" starttime="20230531 10:45:03.971" endtime="20230531 10:45:06.848"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:45:06.848" endtime="20230531 10:45:06.966"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:45:09.967" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:45:06.966" endtime="20230531 10:45:09.967"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:45:11.992" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/techcrunch.png"&gt;&lt;img src="screenshots/techcrunch.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:45:09.967" endtime="20230531 10:45:11.992"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:45:11.992" endtime="20230531 10:45:14.100"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:03.971" endtime="20230531 10:45:14.100"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:03.971" endtime="20230531 10:45:14.100"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:03.969" endtime="20230531 10:45:14.100"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.theverge.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:14.100" level="INFO">${url} = https://www.theverge.com/</msg>
+<status status="PASS" starttime="20230531 10:45:14.100" endtime="20230531 10:45:14.100"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:14.100" level="INFO">${filename} = theverge</msg>
+<status status="PASS" starttime="20230531 10:45:14.100" endtime="20230531 10:45:14.100"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:14.100" level="INFO">${image_name} = screenshots/theverge.png</msg>
+<status status="PASS" starttime="20230531 10:45:14.100" endtime="20230531 10:45:14.100"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:45:14.100" level="INFO">Opening browser 'chrome' to base url 'https://www.theverge.com/'.</msg>
+<status status="PASS" starttime="20230531 10:45:14.100" endtime="20230531 10:45:17.518"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:45:17.518" endtime="20230531 10:45:17.641"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:45:20.643" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:45:17.642" endtime="20230531 10:45:20.643"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:45:20.837" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/theverge.png"&gt;&lt;img src="screenshots/theverge.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:45:20.643" endtime="20230531 10:45:20.838"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:45:20.838" endtime="20230531 10:45:22.956"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:14.100" endtime="20230531 10:45:22.956"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:14.100" endtime="20230531 10:45:22.956"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:14.100" endtime="20230531 10:45:22.956"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.wired.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:22.956" level="INFO">${url} = https://www.wired.com/</msg>
+<status status="PASS" starttime="20230531 10:45:22.956" endtime="20230531 10:45:22.956"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:22.956" level="INFO">${filename} = wired</msg>
+<status status="PASS" starttime="20230531 10:45:22.956" endtime="20230531 10:45:22.956"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:22.956" level="INFO">${image_name} = screenshots/wired.png</msg>
+<status status="PASS" starttime="20230531 10:45:22.956" endtime="20230531 10:45:22.956"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:45:22.956" level="INFO">Opening browser 'chrome' to base url 'https://www.wired.com/'.</msg>
+<status status="PASS" starttime="20230531 10:45:22.956" endtime="20230531 10:45:26.063"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:45:26.063" endtime="20230531 10:45:26.180"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:45:29.181" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:45:26.180" endtime="20230531 10:45:29.181"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:45:29.515" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/wired.png"&gt;&lt;img src="screenshots/wired.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:45:29.181" endtime="20230531 10:45:29.515"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:45:29.515" endtime="20230531 10:45:31.634"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:22.956" endtime="20230531 10:45:31.634"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:22.956" endtime="20230531 10:45:31.634"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:22.956" endtime="20230531 10:45:31.634"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.cnet.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:31.634" level="INFO">${url} = https://www.cnet.com/</msg>
+<status status="PASS" starttime="20230531 10:45:31.634" endtime="20230531 10:45:31.634"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:31.634" level="INFO">${filename} = cnet</msg>
+<status status="PASS" starttime="20230531 10:45:31.634" endtime="20230531 10:45:31.634"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:31.634" level="INFO">${image_name} = screenshots/cnet.png</msg>
+<status status="PASS" starttime="20230531 10:45:31.634" endtime="20230531 10:45:31.634"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:45:31.634" level="INFO">Opening browser 'chrome' to base url 'https://www.cnet.com/'.</msg>
+<status status="PASS" starttime="20230531 10:45:31.634" endtime="20230531 10:45:35.098"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:45:35.098" endtime="20230531 10:45:35.221"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:45:38.221" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:45:35.221" endtime="20230531 10:45:38.221"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:45:38.552" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/cnet.png"&gt;&lt;img src="screenshots/cnet.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:45:38.221" endtime="20230531 10:45:38.552"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:45:38.552" endtime="20230531 10:45:40.699"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:31.634" endtime="20230531 10:45:40.699"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:31.634" endtime="20230531 10:45:40.699"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:31.634" endtime="20230531 10:45:40.699"/>
+</iter>
+<iter>
+<var name="${website}">('https://mashable.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:40.699" level="INFO">${url} = https://mashable.com/</msg>
+<status status="PASS" starttime="20230531 10:45:40.699" endtime="20230531 10:45:40.699"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:40.699" level="INFO">${filename} = mashable</msg>
+<status status="PASS" starttime="20230531 10:45:40.699" endtime="20230531 10:45:40.699"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:40.699" level="INFO">${image_name} = screenshots/mashable.png</msg>
+<status status="PASS" starttime="20230531 10:45:40.699" endtime="20230531 10:45:40.699"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:45:40.699" level="INFO">Opening browser 'chrome' to base url 'https://mashable.com/'.</msg>
+<status status="PASS" starttime="20230531 10:45:40.699" endtime="20230531 10:45:43.496"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:45:43.496" endtime="20230531 10:45:43.637"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:45:46.638" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:45:43.637" endtime="20230531 10:45:46.638"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:45:47.038" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/mashable.png"&gt;&lt;img src="screenshots/mashable.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:45:46.638" endtime="20230531 10:45:47.038"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:45:47.038" endtime="20230531 10:45:49.148"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:40.699" endtime="20230531 10:45:49.148"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:40.699" endtime="20230531 10:45:49.148"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:40.699" endtime="20230531 10:45:49.148"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.espn.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:49.148" level="INFO">${url} = https://www.espn.com/</msg>
+<status status="PASS" starttime="20230531 10:45:49.148" endtime="20230531 10:45:49.148"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:49.148" level="INFO">${filename} = espn</msg>
+<status status="PASS" starttime="20230531 10:45:49.148" endtime="20230531 10:45:49.148"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:45:49.148" level="INFO">${image_name} = screenshots/espn.png</msg>
+<status status="PASS" starttime="20230531 10:45:49.148" endtime="20230531 10:45:49.148"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:45:49.148" level="INFO">Opening browser 'chrome' to base url 'https://www.espn.com/'.</msg>
+<status status="PASS" starttime="20230531 10:45:49.148" endtime="20230531 10:45:54.058"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:45:54.058" endtime="20230531 10:45:54.179"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:45:57.180" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:45:54.179" endtime="20230531 10:45:57.180"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:45:58.028" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/espn.png"&gt;&lt;img src="screenshots/espn.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:45:57.180" endtime="20230531 10:45:58.028"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:45:58.028" endtime="20230531 10:46:00.128"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:49.148" endtime="20230531 10:46:00.128"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:49.148" endtime="20230531 10:46:00.128"/>
+</kw>
+<status status="PASS" starttime="20230531 10:45:49.148" endtime="20230531 10:46:00.128"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.si.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:00.128" level="INFO">${url} = https://www.si.com/</msg>
+<status status="PASS" starttime="20230531 10:46:00.128" endtime="20230531 10:46:00.128"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:00.128" level="INFO">${filename} = si</msg>
+<status status="PASS" starttime="20230531 10:46:00.128" endtime="20230531 10:46:00.128"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:00.128" level="INFO">${image_name} = screenshots/si.png</msg>
+<status status="PASS" starttime="20230531 10:46:00.128" endtime="20230531 10:46:00.128"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:46:00.128" level="INFO">Opening browser 'chrome' to base url 'https://www.si.com/'.</msg>
+<status status="PASS" starttime="20230531 10:46:00.128" endtime="20230531 10:46:03.042"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:46:03.042" endtime="20230531 10:46:03.155"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:46:06.158" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:46:03.155" endtime="20230531 10:46:06.158"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:46:06.258" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/si.png"&gt;&lt;img src="screenshots/si.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:46:06.158" endtime="20230531 10:46:06.268"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:46:06.268" endtime="20230531 10:46:08.359"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:00.128" endtime="20230531 10:46:08.359"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:00.128" endtime="20230531 10:46:08.359"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:00.128" endtime="20230531 10:46:08.359"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.tripadvisor.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:08.359" level="INFO">${url} = https://www.tripadvisor.com/</msg>
+<status status="PASS" starttime="20230531 10:46:08.359" endtime="20230531 10:46:08.359"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:08.359" level="INFO">${filename} = tripadvisor</msg>
+<status status="PASS" starttime="20230531 10:46:08.359" endtime="20230531 10:46:08.359"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:08.359" level="INFO">${image_name} = screenshots/tripadvisor.png</msg>
+<status status="PASS" starttime="20230531 10:46:08.359" endtime="20230531 10:46:08.359"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:46:08.359" level="INFO">Opening browser 'chrome' to base url 'https://www.tripadvisor.com/'.</msg>
+<status status="PASS" starttime="20230531 10:46:08.359" endtime="20230531 10:46:10.965"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:46:10.965" endtime="20230531 10:46:11.087"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:46:14.088" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:46:11.087" endtime="20230531 10:46:14.088"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:46:14.331" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/tripadvisor.png"&gt;&lt;img src="screenshots/tripadvisor.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:46:14.088" endtime="20230531 10:46:14.331"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:46:14.331" endtime="20230531 10:46:16.474"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:08.359" endtime="20230531 10:46:16.474"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:08.359" endtime="20230531 10:46:16.474"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:08.359" endtime="20230531 10:46:16.474"/>
+</iter>
+<iter>
+<var name="${website}">('https://nomadlist.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:16.474" level="INFO">${url} = https://nomadlist.com/</msg>
+<status status="PASS" starttime="20230531 10:46:16.474" endtime="20230531 10:46:16.474"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:16.475" level="INFO">${filename} = nomadlist</msg>
+<status status="PASS" starttime="20230531 10:46:16.475" endtime="20230531 10:46:16.475"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:16.475" level="INFO">${image_name} = screenshots/nomadlist.png</msg>
+<status status="PASS" starttime="20230531 10:46:16.475" endtime="20230531 10:46:16.475"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:46:16.475" level="INFO">Opening browser 'chrome' to base url 'https://nomadlist.com/'.</msg>
+<status status="PASS" starttime="20230531 10:46:16.475" endtime="20230531 10:46:18.974"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:46:18.974" endtime="20230531 10:46:19.097"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:46:22.098" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:46:19.097" endtime="20230531 10:46:22.098"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:46:22.602" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/nomadlist.png"&gt;&lt;img src="screenshots/nomadlist.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:46:22.098" endtime="20230531 10:46:22.602"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:46:22.602" endtime="20230531 10:46:24.704"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:16.475" endtime="20230531 10:46:24.704"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:16.475" endtime="20230531 10:46:24.705"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:16.474" endtime="20230531 10:46:24.705"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.airbnb.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:24.705" level="INFO">${url} = https://www.airbnb.com/</msg>
+<status status="PASS" starttime="20230531 10:46:24.705" endtime="20230531 10:46:24.705"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:24.705" level="INFO">${filename} = airbnb</msg>
+<status status="PASS" starttime="20230531 10:46:24.705" endtime="20230531 10:46:24.705"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:24.705" level="INFO">${image_name} = screenshots/airbnb.png</msg>
+<status status="PASS" starttime="20230531 10:46:24.705" endtime="20230531 10:46:24.705"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:46:24.708" level="INFO">Opening browser 'chrome' to base url 'https://www.airbnb.com/'.</msg>
+<status status="PASS" starttime="20230531 10:46:24.705" endtime="20230531 10:46:26.776"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:46:26.776" endtime="20230531 10:46:27.061"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:46:30.061" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:46:27.061" endtime="20230531 10:46:30.061"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:46:30.380" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/airbnb.png"&gt;&lt;img src="screenshots/airbnb.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:46:30.061" endtime="20230531 10:46:30.380"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:46:30.381" endtime="20230531 10:46:32.494"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:24.705" endtime="20230531 10:46:32.495"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:24.705" endtime="20230531 10:46:32.495"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:24.705" endtime="20230531 10:46:32.495"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.myfitnesspal.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:32.496" level="INFO">${url} = https://www.myfitnesspal.com/</msg>
+<status status="PASS" starttime="20230531 10:46:32.495" endtime="20230531 10:46:32.496"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:32.497" level="INFO">${filename} = myfitnesspal</msg>
+<status status="PASS" starttime="20230531 10:46:32.496" endtime="20230531 10:46:32.497"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:32.497" level="INFO">${image_name} = screenshots/myfitnesspal.png</msg>
+<status status="PASS" starttime="20230531 10:46:32.497" endtime="20230531 10:46:32.497"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:46:32.497" level="INFO">Opening browser 'chrome' to base url 'https://www.myfitnesspal.com/'.</msg>
+<status status="PASS" starttime="20230531 10:46:32.497" endtime="20230531 10:46:36.013"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:46:36.013" endtime="20230531 10:46:36.135"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:46:39.137" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:46:36.136" endtime="20230531 10:46:39.137"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:46:39.277" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/myfitnesspal.png"&gt;&lt;img src="screenshots/myfitnesspal.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:46:39.137" endtime="20230531 10:46:39.277"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:46:39.277" endtime="20230531 10:46:41.364"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:32.497" endtime="20230531 10:46:41.364"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:32.497" endtime="20230531 10:46:41.364"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:32.495" endtime="20230531 10:46:41.364"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.khanacademy.org/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:41.364" level="INFO">${url} = https://www.khanacademy.org/</msg>
+<status status="PASS" starttime="20230531 10:46:41.364" endtime="20230531 10:46:41.364"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:41.364" level="INFO">${filename} = khanacademy</msg>
+<status status="PASS" starttime="20230531 10:46:41.364" endtime="20230531 10:46:41.364"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:41.364" level="INFO">${image_name} = screenshots/khanacademy.png</msg>
+<status status="PASS" starttime="20230531 10:46:41.364" endtime="20230531 10:46:41.364"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:46:41.367" level="INFO">Opening browser 'chrome' to base url 'https://www.khanacademy.org/'.</msg>
+<status status="PASS" starttime="20230531 10:46:41.364" endtime="20230531 10:46:43.630"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:46:43.630" endtime="20230531 10:46:43.745"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:46:46.745" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:46:43.745" endtime="20230531 10:46:46.745"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:46:46.874" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/khanacademy.png"&gt;&lt;img src="screenshots/khanacademy.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:46:46.745" endtime="20230531 10:46:46.874"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:46:46.874" endtime="20230531 10:46:48.961"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:41.364" endtime="20230531 10:46:48.961"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:41.364" endtime="20230531 10:46:48.961"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:41.364" endtime="20230531 10:46:48.961"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.coursera.org/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:48.961" level="INFO">${url} = https://www.coursera.org/</msg>
+<status status="PASS" starttime="20230531 10:46:48.961" endtime="20230531 10:46:48.961"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:48.961" level="INFO">${filename} = coursera</msg>
+<status status="PASS" starttime="20230531 10:46:48.961" endtime="20230531 10:46:48.961"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:48.961" level="INFO">${image_name} = screenshots/coursera.png</msg>
+<status status="PASS" starttime="20230531 10:46:48.961" endtime="20230531 10:46:48.961"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:46:48.961" level="INFO">Opening browser 'chrome' to base url 'https://www.coursera.org/'.</msg>
+<status status="PASS" starttime="20230531 10:46:48.961" endtime="20230531 10:46:54.017"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:46:54.017" endtime="20230531 10:46:54.130"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:46:57.130" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:46:54.130" endtime="20230531 10:46:57.130"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:46:57.247" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/coursera.png"&gt;&lt;img src="screenshots/coursera.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:46:57.130" endtime="20230531 10:46:57.247"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:46:57.252" endtime="20230531 10:46:59.340"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:48.961" endtime="20230531 10:46:59.340"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:48.961" endtime="20230531 10:46:59.340"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:48.961" endtime="20230531 10:46:59.340"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.udemy.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:59.340" level="INFO">${url} = https://www.udemy.com/</msg>
+<status status="PASS" starttime="20230531 10:46:59.340" endtime="20230531 10:46:59.340"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:59.340" level="INFO">${filename} = udemy</msg>
+<status status="PASS" starttime="20230531 10:46:59.340" endtime="20230531 10:46:59.340"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:46:59.340" level="INFO">${image_name} = screenshots/udemy.png</msg>
+<status status="PASS" starttime="20230531 10:46:59.340" endtime="20230531 10:46:59.340"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:46:59.340" level="INFO">Opening browser 'chrome' to base url 'https://www.udemy.com/'.</msg>
+<status status="PASS" starttime="20230531 10:46:59.340" endtime="20230531 10:47:02.503"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:47:02.504" endtime="20230531 10:47:02.631"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:47:05.631" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:47:02.631" endtime="20230531 10:47:05.631"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:47:05.804" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/udemy.png"&gt;&lt;img src="screenshots/udemy.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:47:05.631" endtime="20230531 10:47:05.805"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:47:05.805" endtime="20230531 10:47:07.921"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:59.340" endtime="20230531 10:47:07.921"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:59.340" endtime="20230531 10:47:07.921"/>
+</kw>
+<status status="PASS" starttime="20230531 10:46:59.340" endtime="20230531 10:47:07.921"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.edx.org/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:07.922" level="INFO">${url} = https://www.edx.org/</msg>
+<status status="PASS" starttime="20230531 10:47:07.922" endtime="20230531 10:47:07.922"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:07.922" level="INFO">${filename} = edx</msg>
+<status status="PASS" starttime="20230531 10:47:07.922" endtime="20230531 10:47:07.922"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:07.922" level="INFO">${image_name} = screenshots/edx.png</msg>
+<status status="PASS" starttime="20230531 10:47:07.922" endtime="20230531 10:47:07.922"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:47:07.922" level="INFO">Opening browser 'chrome' to base url 'https://www.edx.org/'.</msg>
+<status status="PASS" starttime="20230531 10:47:07.922" endtime="20230531 10:47:11.669"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:47:11.669" endtime="20230531 10:47:11.792"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:47:14.793" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:47:11.792" endtime="20230531 10:47:14.793"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:47:14.955" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/edx.png"&gt;&lt;img src="screenshots/edx.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:47:14.793" endtime="20230531 10:47:14.955"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:47:14.955" endtime="20230531 10:47:17.038"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:07.922" endtime="20230531 10:47:17.039"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:07.922" endtime="20230531 10:47:17.039"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:07.921" endtime="20230531 10:47:17.039"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.codecademy.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:17.039" level="INFO">${url} = https://www.codecademy.com/</msg>
+<status status="PASS" starttime="20230531 10:47:17.039" endtime="20230531 10:47:17.039"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:17.039" level="INFO">${filename} = codecademy</msg>
+<status status="PASS" starttime="20230531 10:47:17.039" endtime="20230531 10:47:17.039"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:17.039" level="INFO">${image_name} = screenshots/codecademy.png</msg>
+<status status="PASS" starttime="20230531 10:47:17.039" endtime="20230531 10:47:17.039"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:47:17.039" level="INFO">Opening browser 'chrome' to base url 'https://www.codecademy.com/'.</msg>
+<status status="PASS" starttime="20230531 10:47:17.039" endtime="20230531 10:47:20.454"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:47:20.455" endtime="20230531 10:47:20.578"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:47:23.578" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:47:20.578" endtime="20230531 10:47:23.578"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:47:23.774" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/codecademy.png"&gt;&lt;img src="screenshots/codecademy.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:47:23.578" endtime="20230531 10:47:23.774"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:47:23.774" endtime="20230531 10:47:25.865"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:17.039" endtime="20230531 10:47:25.865"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:17.039" endtime="20230531 10:47:25.865"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:17.039" endtime="20230531 10:47:25.865"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.imdb.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:25.867" level="INFO">${url} = https://www.imdb.com/</msg>
+<status status="PASS" starttime="20230531 10:47:25.865" endtime="20230531 10:47:25.867"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:25.867" level="INFO">${filename} = imdb</msg>
+<status status="PASS" starttime="20230531 10:47:25.867" endtime="20230531 10:47:25.867"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:25.867" level="INFO">${image_name} = screenshots/imdb.png</msg>
+<status status="PASS" starttime="20230531 10:47:25.867" endtime="20230531 10:47:25.867"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:47:25.867" level="INFO">Opening browser 'chrome' to base url 'https://www.imdb.com/'.</msg>
+<status status="PASS" starttime="20230531 10:47:25.867" endtime="20230531 10:47:30.600"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:47:30.600" endtime="20230531 10:47:30.729"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:47:33.730" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:47:30.729" endtime="20230531 10:47:33.730"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:47:34.078" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/imdb.png"&gt;&lt;img src="screenshots/imdb.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:47:33.730" endtime="20230531 10:47:34.078"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:47:34.078" endtime="20230531 10:47:36.163"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:25.867" endtime="20230531 10:47:36.163"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:25.867" endtime="20230531 10:47:36.163"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:25.865" endtime="20230531 10:47:36.163"/>
+</iter>
+<iter>
+<var name="${website}">('https://www.polygon.com/',)</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${url}</var>
+<arg>${website[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:36.163" level="INFO">${url} = https://www.polygon.com/</msg>
+<status status="PASS" starttime="20230531 10:47:36.163" endtime="20230531 10:47:36.163"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${filename}</var>
+<arg>${url.split('//')[1].replace('www.', '').split('.')[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:36.163" level="INFO">${filename} = polygon</msg>
+<status status="PASS" starttime="20230531 10:47:36.163" endtime="20230531 10:47:36.163"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Take Screenshot</arg>
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Take Screenshot" library="takeScreenshot">
+<arg>${url}</arg>
+<arg>${filename}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${image_name}</var>
+<arg>screenshots/${filename}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230531 10:47:36.167" level="INFO">${image_name} = screenshots/polygon.png</msg>
+<status status="PASS" starttime="20230531 10:47:36.167" endtime="20230531 10:47:36.167"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230531 10:47:36.167" level="INFO">Opening browser 'chrome' to base url 'https://www.polygon.com/'.</msg>
+<status status="PASS" starttime="20230531 10:47:36.167" endtime="20230531 10:47:38.293"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230531 10:47:38.293" endtime="20230531 10:47:38.406"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230531 10:47:41.407" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230531 10:47:38.406" endtime="20230531 10:47:41.407"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${image_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230531 10:47:41.937" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/polygon.png"&gt;&lt;img src="screenshots/polygon.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230531 10:47:41.407" endtime="20230531 10:47:41.937"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230531 10:47:41.937" endtime="20230531 10:47:44.026"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:36.167" endtime="20230531 10:47:44.026"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:36.163" endtime="20230531 10:47:44.026"/>
+</kw>
+<status status="PASS" starttime="20230531 10:47:36.163" endtime="20230531 10:47:44.026"/>
+</iter>
+<status status="PASS" starttime="20230531 10:42:52.049" endtime="20230531 10:47:44.026"/>
 </for>
-<status status="PASS" starttime="20230530 14:18:01.279" endtime="20230530 14:20:45.007"/>
+<status status="PASS" starttime="20230531 10:42:51.733" endtime="20230531 10:47:44.027"/>
 </test>
 <kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
 <doc>Disconnects from the database.</doc>
-<msg timestamp="20230530 14:20:45.009" level="INFO">Executing : Disconnect From Database</msg>
-<status status="PASS" starttime="20230530 14:20:45.009" endtime="20230530 14:20:45.010"/>
+<msg timestamp="20230531 10:47:44.027" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20230531 10:47:44.027" endtime="20230531 10:47:44.027"/>
 </kw>
-<status status="PASS" starttime="20230530 14:18:00.090" endtime="20230530 14:20:45.010"/>
+<status status="PASS" starttime="20230531 10:42:50.774" endtime="20230531 10:47:44.032"/>
 </suite>
 <statistics>
 <total>
