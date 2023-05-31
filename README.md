@@ -1,5 +1,5 @@
 # WebCenter
-## *Small Tasks, Big Impact*
+
 
 WebCenter is a web application designed to serve as a visual bookmarking solution. This user-friendly platform allows users to store and effortlessly locate their website bookmarks. Each bookmark is presented as a card, complete with a title, a webpage screenshot, and a brief description. Users can conveniently log in to the application, utilize the powerful search functionality, and apply filters based on categories and tags to swiftly find desired websites. The admin privileges enable the management of website information, including editing existing data and adding new websites. The back-end is built with Java Spring Boot and employing a MySQL database. The front-end is developed using React, Redux, and JavaScript, with Bootstrap providing an aesthetically pleasing design. Additionally, the integration of Robot Framework facilitates automated screenshot capturing for each website stored in the MySQL database. The app is hosted online via Heroku, ensuring accessibility and availability for users.
 
