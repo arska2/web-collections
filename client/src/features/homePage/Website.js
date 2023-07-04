@@ -33,9 +33,8 @@ export const Website = ({ website }) => {
 
 
 
-    return (<>
-
-        <div className="col-md-3">
+    return (
+        <div className="col card-height">
             <div className="card">
                 {imageExists
                     ? (<img src={imageSrc} className="card-img-top" onError={handleImageError} alt="img header" />)
@@ -44,10 +43,11 @@ export const Website = ({ website }) => {
 
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
-                    <h6 className="card-subtitle">{url}</h6>
-                    <div className="card-text">
+                    {/* <h6 className="card-subtitle">{url}</h6> */}
+                    <div className="card-text overflow-auto" style={{ minHeight: 'calc(1.5em * 4)', maxHeight: 'calc(1.5em * 4)' }}>
                         <p >{description}</p>
                     </div>
+
 
                     <a href={url} className="btn me-2" target="_blank"><b className="fas fa-link">Visit Site</b></a>
                     {user.id !== 0 && <a href={'tmp'} className="btn me-2" target="_blank"><b className="fab fa-like">Add to Favorites</b></a>}
@@ -56,7 +56,6 @@ export const Website = ({ website }) => {
                 </div>
             </div>
         </div>
-    </>
     )
 
 }
